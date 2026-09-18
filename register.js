@@ -837,6 +837,9 @@ document.addEventListener(
 
           }
 
+          console.log("GOOGLE AUTH BEFORE SUBMISSION:", googleAuth);
+console.log("GOOGLE TOKEN EXISTS:", !!googleAuth.idToken);
+console.log("GOOGLE EMAIL:", googleAuth.email);
 
           /*******************************************
            * CREATE REGISTRATION DATA
