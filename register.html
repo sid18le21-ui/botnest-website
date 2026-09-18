@@ -1,289 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | BotNest Academy</title>
-  <meta name="description" content="Register for a BotNest Academy course.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Registration-page-only styling */
-    .register-page{max-width:1120px;margin:0 auto;padding:42px 24px 90px}
-    .register-hero{padding:58px 0 34px}
-    .register-kicker{font-size:11px;letter-spacing:2.5px;color:var(--cyan);font-weight:700;text-transform:uppercase}
-    .register-hero h1{margin:14px 0 16px;max-width:900px}
-    .register-hero p{max-width:720px;color:var(--muted);line-height:1.75;font-size:16px}
-    .course-pill{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:8px 12px;border:1px solid rgba(53,217,255,.22);background:rgba(53,217,255,.06);border-radius:999px;color:#c7f5ff;font-size:12px;font-weight:700}
-    .registration-shell{border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.25)}
-    .form-section{padding:32px;border-bottom:1px solid var(--line)}
-    .form-section:last-child{border-bottom:0}
-    .section-title{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px}
-    .section-number{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(53,217,255,.3);border-radius:10px;color:var(--cyan);font-family:"Space Grotesk";font-weight:700;font-size:12px;flex:0 0 auto}
-    .section-title h2{font-size:22px;margin:0 0 5px}
-    .section-title p{color:var(--muted);font-size:13px;line-height:1.55;margin:0}
-    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-    .field{display:flex;flex-direction:column;gap:8px}
-    .field.full{grid-column:1/-1}
-    .field label{font-size:12px;color:#dce4f7;font-weight:600}
-    .required{color:var(--pink)}
-    .field input,.field select,.field textarea{
-      width:100%;border:1px solid rgba(255,255,255,.12);border-radius:12px;
-      background:rgba(4,7,17,.7);color:var(--text);padding:13px 14px;
-      font:inherit;font-size:14px;outline:none;transition:.2s;
-    }
-    .field textarea{min-height:110px;resize:vertical}
-    .field input::placeholder,.field textarea::placeholder{color:#5f6b84}
-    .field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(53,217,255,.55);box-shadow:0 0 0 3px rgba(53,217,255,.08)}
-    .field small{color:#6f7b95;font-size:11px;line-height:1.45}
-    .google-box{padding:22px;border:1px solid rgba(95,126,255,.25);border-radius:18px;background:linear-gradient(120deg,rgba(64,93,255,.09),rgba(53,217,255,.04));margin-bottom:28px}
-    .google-box h3{font-size:17px;margin-bottom:7px}
-    .google-box p{color:var(--muted);font-size:12px;line-height:1.6;margin-bottom:16px}
-    .google-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 17px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#fff;color:#151824;font-weight:700;cursor:pointer}
-    .google-btn:disabled{opacity:.7;cursor:default}
-    .google-note{margin-top:10px!important;margin-bottom:0!important;color:#77839d!important}
-    .prereq-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-    .choice{position:relative}
-    .choice input{position:absolute;opacity:0;pointer-events:none}
-    .choice label{display:block;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.025);cursor:pointer;transition:.2s}
-    .choice label strong{display:block;font-size:14px;margin-bottom:4px}
-    .choice label span{display:block;color:var(--muted);font-size:11px;line-height:1.45}
-    .choice input:checked+label{border-color:rgba(53,217,255,.65);background:rgba(53,217,255,.08);box-shadow:0 0 25px rgba(53,217,255,.08)}
-    .prereq-warning{display:none;margin-top:16px;padding:18px;border:1px solid rgba(255,200,61,.32);border-radius:15px;background:rgba(255,200,61,.06)}
-    .prereq-warning.show{display:block}
-    .prereq-warning h3{font-size:16px;color:#ffd86c;margin-bottom:7px}
-    .prereq-warning p{color:#c9c3a9;font-size:12px;line-height:1.65;margin-bottom:12px}
-    .prereq-warning a{display:inline-flex;padding:10px 13px;border-radius:9px;border:1px solid rgba(255,200,61,.3);color:#ffe18d;font-size:12px;font-weight:700}
-    .blocked-note{display:none;margin-top:12px;color:#ffca58;font-size:11px}
-    .blocked-note.show{display:block}
-    .submit-area{padding:30px 32px;background:rgba(255,255,255,.018);display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .submit-copy{max-width:600px}
-    .submit-copy strong{display:block;font-size:14px;margin-bottom:5px}
-    .submit-copy span{display:block;color:var(--muted);font-size:11px;line-height:1.5}
-    .submit-btn{border:0;cursor:pointer}
-    .submit-btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none}
-    .error-box{display:none;margin:0 32px 24px;padding:13px 15px;border-radius:12px;border:1px solid rgba(255,77,157,.3);background:rgba(255,77,157,.06);color:#ffc2dc;font-size:12px}
-    .error-box.show{display:block}
-    .success-card{display:none;padding:46px 32px;text-align:center}
-    .success-card.show{display:block}
-    .success-icon{width:68px;height:68px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:rgba(61,255,186,.1);border:1px solid rgba(61,255,186,.35);color:#65f5b0;font-size:30px}
-    .success-card h2{font-size:clamp(30px,5vw,48px);margin-bottom:12px}
-    .success-card p{max-width:650px;margin:0 auto 22px;color:var(--muted);line-height:1.7;font-size:14px}
-    .success-meta{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:24px}
-    .success-meta span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:#cdd7ee;font-size:11px}
-    .success-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-    .privacy-note{padding:18px 32px;color:#66728b;font-size:10px;line-height:1.6;border-top:1px solid var(--line)}
-    .top-actions{display:flex;justify-content:flex-end;margin-bottom:5px}
-    .back-btn{display:inline-flex;padding:10px 14px;border:1px solid var(--line);border-radius:10px;color:#cbd4e8;font-size:12px}
-    .wa-btn{background:#25D366!important;color:#fff!important;border-color:transparent!important}
-    @media(max-width:700px){
-      .register-page{padding:25px 16px 60px}.register-hero{padding:35px 0 24px}
-      .form-section{padding:24px 18px}.form-grid,.prereq-options{grid-template-columns:1fr}
-      .field.full{grid-column:auto}.submit-area{padding:24px 18px;flex-direction:column;align-items:stretch}
-      .submit-btn{width:100%}.error-box{margin:0 18px 18px}.privacy-note{padding:16px 18px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | BotNest Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.register-page{max-width:1120px;margin:auto;padding:35px 24px 90px}
+.register-hero{padding:35px 0 28px}.register-kicker{font-size:11px;letter-spacing:2.5px;color:var(--cyan);font-weight:700;text-transform:uppercase}
+.register-hero h1{font-family:"Space Grotesk";font-size:clamp(38px,6vw,68px);line-height:1;margin:14px 0}
+.register-hero p{color:var(--muted);max-width:760px;line-height:1.7}
+.course-pill{display:inline-flex;margin-top:18px;padding:9px 14px;border:1px solid rgba(53,217,255,.3);border-radius:999px;background:rgba(53,217,255,.06);color:#c8f5ff;font-size:12px;font-weight:700}
+.registration-shell{border:1px solid var(--line);border-radius:24px;background:rgba(13,16,32,.82);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.3)}
+.form-section{padding:32px;border-bottom:1px solid var(--line)}
+.section-title{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.section-number{width:34px;height:34px;display:grid;place-items:center;flex:0 0 auto;border:1px solid rgba(53,217,255,.35);border-radius:10px;color:var(--cyan);font-weight:700;font-size:12px}
+.section-title h2{font-size:22px;margin:3px 0 5px}.section-title p{color:var(--muted);font-size:13px;margin:0;line-height:1.5}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}
+.field label{font-size:12px;color:#dce4f7;font-weight:600}.required{color:var(--pink)}
+.field input,.field select,.field textarea{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#080b16;color:var(--text);padding:13px 14px;font:inherit;font-size:14px;outline:0}
+.field textarea{min-height:105px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(53,217,255,.6);box-shadow:0 0 0 3px rgba(53,217,255,.08)}
+.google-box{padding:22px;border:1px solid rgba(95,126,255,.3);border-radius:18px;background:linear-gradient(120deg,rgba(64,93,255,.1),rgba(53,217,255,.04));margin-bottom:30px}
+.google-box h3{margin:0 0 7px;font-size:17px}.google-box p{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 15px}
+.google-btn{padding:12px 17px;border-radius:10px;border:1px solid #d9dce3;background:white;color:#151824;font-weight:700;cursor:pointer}
+.prereq-box{margin-bottom:8px}.prereq-question{font-size:14px!important;color:#f4f7ff!important;line-height:1.5!important}
+.prereq-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.choice input{position:absolute;opacity:0}.choice label{display:block;padding:16px;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:rgba(255,255,255,.025);cursor:pointer}
+.choice label strong{display:block;font-size:14px;margin-bottom:4px}.choice label span{color:var(--muted);font-size:11px}
+.choice input:checked+label{border-color:rgba(53,217,255,.7);background:rgba(53,217,255,.08)}
+.prereq-warning{display:none;margin-top:16px;padding:18px;border:1px solid rgba(255,200,61,.35);border-radius:15px;background:rgba(255,200,61,.07)}
+.prereq-warning.show{display:block}.prereq-warning h3{color:#ffd86c;font-size:16px;margin:0 0 7px}.prereq-warning p{color:#d5ceb4;font-size:12px;line-height:1.65;margin:0 0 12px}
+.prereq-warning a{display:inline-flex;padding:10px 13px;border-radius:9px;border:1px solid rgba(255,200,61,.35);color:#ffe18d;font-size:12px;font-weight:700}
+.blocked-note{display:none;margin-top:12px;color:#ffca58;font-size:11px}.blocked-note.show{display:block}
+.submit-area{padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,255,255,.02)}
+.submit-copy strong{display:block;font-size:14px;margin-bottom:5px}.submit-copy span{display:block;color:var(--muted);font-size:11px;line-height:1.5}
+.submit-btn{padding:14px 22px!important;border:0!important;cursor:pointer;background:linear-gradient(135deg,#247cff,#654bff)!important;color:white!important;border-radius:12px!important;font-weight:700!important}
+.submit-btn:disabled{opacity:.4!important;cursor:not-allowed;transform:none!important}
+.error-box{display:none;margin:0 32px 20px;padding:13px 15px;border-radius:12px;border:1px solid rgba(255,77,157,.35);background:rgba(255,77,157,.07);color:#ffc2dc;font-size:12px}.error-box.show{display:block}
+.success-card{display:none;padding:50px 30px;text-align:center}.success-card.show{display:block}
+.success-icon{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:rgba(61,255,186,.1);border:1px solid rgba(61,255,186,.35);color:#65f5b0;font-size:30px}
+.success-card h2{font-family:"Space Grotesk";font-size:clamp(30px,5vw,48px);margin:0 0 12px}.success-card p{max-width:650px;margin:0 auto 20px;color:var(--muted);line-height:1.7;font-size:14px}
+.success-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:22px}.success-meta span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:#d3dcf0;font-size:11px}
+.success-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.success-actions a{display:inline-flex!important;align-items:center;justify-content:center;padding:13px 17px;border-radius:11px;font-weight:700}
+.wa-btn{background:#25D366!important;color:white!important}.home-btn{border:1px solid var(--line);color:white}
+.privacy-note{padding:17px 32px;border-top:1px solid var(--line);color:#66728b;font-size:10px;line-height:1.6}
+.back-row{text-align:right}.back-btn{display:inline-flex;padding:10px 14px;border:1px solid var(--line);border-radius:10px;font-size:12px}
+@media(max-width:700px){.register-page{padding:25px 16px 60px}.form-section{padding:24px 18px}.form-grid,.prereq-options{grid-template-columns:1fr}.field.full{grid-column:auto}.submit-area{padding:24px 18px;flex-direction:column;align-items:stretch}.submit-btn{width:100%}.error-box{margin:0 18px 18px}.privacy-note{padding:16px 18px}}
+</style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="orb orb-one"></div>
-  <div class="orb orb-two"></div>
-  <div class="scroll-progress"></div>
+<div class="bg-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="scroll-progress"></div>
+<header class="site-header">
+<a class="brand" href="index.html"><img src="assets/botnest-logo.jpg" alt="BotNest Academy logo"><span>BOTNEST</span></a>
+<nav class="nav"><a href="index.html#programs">Programs</a><a href="index.html#why">Why BotNest</a><a href="index.html#contact">Contact</a></nav>
+<a class="nav-cta" href="index.html">← Programs</a>
+</header>
 
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="BotNest Academy home">
-      <img src="assets/botnest-logo.jpg" alt="BotNest Academy logo">
-      <span>BOTNEST</span>
-    </a>
-    <nav class="nav">
-      <a href="index.html#programs">Programs</a>
-      <a href="index.html#why">Why BotNest</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="index.html">← Programs</a>
-  </header>
+<main class="register-page">
+<div class="back-row"><a class="back-btn" id="backToCourse" href="index.html#programs">← Back to course</a></div>
+<section class="register-hero">
+<div class="register-kicker">Course registration</div>
+<h1>Register for <span id="courseTitle">Your Course</span></h1>
+<p>Complete the form so our team can understand the student's background and contact you at your preferred date and time about the course schedule, payment and next steps.</p>
+<div class="course-pill">Course: <span id="courseName">Loading…</span>&nbsp;&nbsp;•&nbsp;&nbsp;Level: <span id="levelName">Loading…</span></div>
+</section>
 
-  <main class="register-page">
-    <div class="top-actions">
-      <a class="back-btn" id="backToCourse" href="index.html#programs">← Back to course</a>
-    </div>
+<section class="registration-shell">
+<form id="registrationForm" novalidate>
+<div class="form-section">
+<div class="google-box"><h3>Continue with Google</h3><p>Google sign-in will be connected after the Google OAuth setup. It will allow the registrant to verify their email and pre-fill basic details.</p><button type="button" class="google-btn" id="googleSignInBtn">G&nbsp; Continue with Google</button><p id="googleStatus" style="margin:10px 0 0">Google sign-in setup is pending.</p></div>
+<div class="section-title"><div class="section-number">01</div><div><h2>Student details</h2><p>Tell us about the student who will attend the program.</p></div></div>
+<div class="form-grid">
+<div class="field"><label for="studentName">Student full name <span class="required">*</span></label><input id="studentName" name="studentName" required placeholder="Enter student's full name"></div>
+<div class="field"><label for="age">Age <span class="required">*</span></label><input id="age" name="age" required type="number" min="5" max="60" placeholder="e.g. 13"></div>
+<div class="field"><label for="grade">Class / Grade <span class="required">*</span></label><input id="grade" name="grade" required placeholder="e.g. Grade 8"></div>
+<div class="field"><label for="school">School / College <span class="required">*</span></label><input id="school" name="school" required placeholder="Enter school or college"></div>
+<div class="field"><label for="city">City / Location <span class="required">*</span></label><input id="city" name="city" required placeholder="e.g. Chennai"></div>
+</div>
+</div>
 
-    <section class="register-hero">
-      <div class="register-kicker">Ready to start?</div>
-      <h1>Register for <em id="courseTitle">Your Course</em></h1>
-      <p>Complete the registration below so our team can understand the student's learning background and contact you at your preferred date and time regarding schedule, payment and next steps.</p>
-      <div class="course-pill">Course: <span id="courseName">—</span> &nbsp;•&nbsp; Level: <span id="levelName">—</span></div>
-    </section>
+<div class="form-section">
+<div class="section-title"><div class="section-number">02</div><div><h2>Parent / guardian details</h2><p>We'll use these details to contact you about the course.</p></div></div>
+<div class="form-grid">
+<div class="field"><label for="parentName">Parent / guardian name <span class="required">*</span></label><input id="parentName" name="parentName" required placeholder="Enter parent / guardian name"></div>
+<div class="field"><label for="relationship">Relationship <span class="required">*</span></label><select id="relationship" name="relationship" required><option value="">Select</option><option>Father</option><option>Mother</option><option>Guardian</option><option>Other</option></select></div>
+<div class="field"><label for="phone">Phone number <span class="required">*</span></label><input id="phone" name="phone" required type="tel" placeholder="+91 XXXXX XXXXX"></div>
+<div class="field"><label for="email">Email address <span class="required">*</span></label><input id="email" name="email" required type="email" placeholder="parent@example.com"></div>
+</div>
+</div>
 
-    <section class="registration-shell" id="registrationShell">
-      <form id="registrationForm" novalidate>
-        <div class="form-section">
-          <div class="google-box">
-            <h3>Continue with Google</h3>
-            <p>Google sign-in can verify the email address and pre-fill the registrant's name. The Google Client ID will be connected during the backend setup.</p>
-            <button type="button" class="google-btn" id="googleSignInBtn">G&nbsp; Continue with Google</button>
-            <p class="google-note" id="googleStatus">Google sign-in will be enabled after the Google OAuth configuration is added.</p>
-          </div>
+<div class="form-section">
+<div class="section-title"><div class="section-number">03</div><div><h2>Course experience</h2><p id="experienceIntro">Share the student's previous learning experience.</p></div></div>
 
-          <div class="section-title">
-            <div class="section-number">01</div>
-            <div><h2>Student details</h2><p>Tell us about the student who will attend the program.</p></div>
-          </div>
+<div id="prerequisiteArea" style="display:none" class="prereq-box">
+<div class="field">
+<label class="prereq-question" id="prereqQuestion">Prerequisite question</label>
+<div class="prereq-options">
+<div class="choice"><input type="radio" id="prereqYes" name="prerequisite" value="Yes"><label for="prereqYes"><strong>Yes</strong><span>I have completed the required previous level.</span></label></div>
+<div class="choice"><input type="radio" id="prereqNo" name="prerequisite" value="No"><label for="prereqNo"><strong>No</strong><span>I have not completed the required previous level.</span></label></div>
+</div>
+</div>
+<div class="prereq-warning" id="prereqWarning"><h3>⚠️ Previous level recommended</h3><p id="prereqWarningText"></p><a id="prereqCourseLink" href="#">View recommended course →</a><div class="blocked-note" id="blockedNote">Registration cannot be submitted for this level until the prerequisite is completed.</div></div>
+</div>
 
-          <div class="form-grid">
-            <div class="field">
-              <label for="studentName">Student full name <span class="required">*</span></label>
-              <input id="studentName" name="studentName" required autocomplete="name" placeholder="Enter student's full name">
-            </div>
-            <div class="field">
-              <label for="age">Age <span class="required">*</span></label>
-              <input id="age" name="age" required type="number" min="5" max="60" placeholder="e.g. 13">
-            </div>
-            <div class="field">
-              <label for="grade">Class / Grade <span class="required">*</span></label>
-              <input id="grade" name="grade" required placeholder="e.g. Grade 8">
-            </div>
-            <div class="field">
-              <label for="school">School / College <span class="required">*</span></label>
-              <input id="school" name="school" required placeholder="Enter school or college">
-            </div>
-            <div class="field">
-              <label for="city">City / Location <span class="required">*</span></label>
-              <input id="city" name="city" required placeholder="e.g. Chennai">
-            </div>
-          </div>
-        </div>
+<div class="form-grid" style="margin-top:18px">
+<div class="field full"><label for="previousExperience">Briefly describe previous experience</label><textarea id="previousExperience" name="previousExperience" placeholder="Projects, Arduino / ESP32, coding, previous courses, competitions, etc."></textarea></div>
+<div class="field"><label for="goals">What would the student like to learn?</label><textarea id="goals" name="goals" placeholder="Tell us what you hope to achieve."></textarea></div>
+<div class="field"><label for="anythingElse">Anything else we should know?</label><textarea id="anythingElse" name="anythingElse" placeholder="Any useful information for our team."></textarea></div>
+</div>
+</div>
 
-        <div class="form-section">
-          <div class="section-title">
-            <div class="section-number">02</div>
-            <div><h2>Parent / guardian details</h2><p>We'll use these details to contact you about the course.</p></div>
-          </div>
+<div class="form-section">
+<div class="section-title"><div class="section-number">04</div><div><h2>Preferred contact time</h2><p>Choose when you would like our team to contact you about schedule and payment.</p></div></div>
+<div class="form-grid">
+<div class="field"><label for="contactDate">Preferred date <span class="required">*</span></label><input id="contactDate" name="contactDate" required type="date"></div>
+<div class="field"><label for="contactTime">Preferred time <span class="required">*</span></label><input id="contactTime" name="contactTime" required type="time"></div>
+</div>
+</div>
 
-          <div class="form-grid">
-            <div class="field">
-              <label for="parentName">Parent / guardian name <span class="required">*</span></label>
-              <input id="parentName" name="parentName" required autocomplete="name" placeholder="Enter parent / guardian name">
-            </div>
-            <div class="field">
-              <label for="relationship">Relationship <span class="required">*</span></label>
-              <select id="relationship" name="relationship" required>
-                <option value="">Select</option>
-                <option>Father</option>
-                <option>Mother</option>
-                <option>Guardian</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="phone">Phone number <span class="required">*</span></label>
-              <input id="phone" name="phone" required type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 XXXXX XXXXX">
-            </div>
-            <div class="field">
-              <label for="email">Email address <span class="required">*</span></label>
-              <input id="email" name="email" required type="email" autocomplete="email" placeholder="parent@example.com">
-            </div>
-          </div>
-        </div>
+<div id="errorBox" class="error-box" role="alert"></div>
+<div class="submit-area"><div class="submit-copy"><strong>No payment is required at this stage.</strong><span>After registration, our team will contact you at the selected time regarding class schedule, payment and next steps.</span></div><button id="submitBtn" class="submit-btn" type="submit">Submit Registration →</button></div>
+</form>
 
-        <div class="form-section" id="experienceSection">
-          <div class="section-title">
-            <div class="section-number">03</div>
-            <div><h2>Course experience</h2><p id="experienceIntro">Help us understand the student's previous learning experience.</p></div>
-          </div>
-
-          <div id="prerequisiteBlock" hidden>
-            <div class="field">
-              <label id="prereqQuestion" for="prerequisite">Prerequisite question <span class="required">*</span></label>
-              <div class="prereq-options">
-                <div class="choice">
-                  <input type="radio" id="prereqYes" name="prerequisite" value="Yes">
-                  <label for="prereqYes"><strong>Yes</strong><span>I have completed the required previous level.</span></label>
-                </div>
-                <div class="choice">
-                  <input type="radio" id="prereqNo" name="prerequisite" value="No">
-                  <label for="prereqNo"><strong>No</strong><span>I have not completed the required previous level.</span></label>
-                </div>
-              </div>
-            </div>
-
-            <div class="prereq-warning" id="prereqWarning">
-              <h3>⚠️ Previous level recommended</h3>
-              <p id="prereqWarningText"></p>
-              <a id="prereqCourseLink" href="#">View recommended course →</a>
-              <div class="blocked-note" id="blockedNote">Registration cannot be submitted for this level until the prerequisite is completed.</div>
-            </div>
-          </div>
-
-          <div class="form-grid" style="margin-top:18px">
-            <div class="field full">
-              <label for="previousExperience">Briefly describe previous experience</label>
-              <textarea id="previousExperience" name="previousExperience" placeholder="Projects, Arduino / ESP32, coding, previous courses, competitions, etc."></textarea>
-            </div>
-            <div class="field">
-              <label for="goals">What would the student like to learn?</label>
-              <textarea id="goals" name="goals" placeholder="Tell us what you hope to achieve."></textarea>
-            </div>
-            <div class="field">
-              <label for="anythingElse">Anything else we should know?</label>
-              <textarea id="anythingElse" name="anythingElse" placeholder="Any useful information for our team."></textarea>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-section">
-          <div class="section-title">
-            <div class="section-number">04</div>
-            <div><h2>Preferred contact time</h2><p>Choose when you would like our team to contact you about schedule and payment.</p></div>
-          </div>
-
-          <div class="form-grid">
-            <div class="field">
-              <label for="contactDate">Preferred date <span class="required">*</span></label>
-              <input id="contactDate" name="contactDate" required type="date">
-            </div>
-            <div class="field">
-              <label for="contactTime">Preferred time <span class="required">*</span></label>
-              <input id="contactTime" name="contactTime" required type="time">
-            </div>
-          </div>
-        </div>
-
-        <div class="error-box" id="errorBox" role="alert"></div>
-
-        <div class="submit-area">
-          <div class="submit-copy">
-            <strong>No payment is required at this stage.</strong>
-            <span>After registration, our team will contact you at the selected time regarding class schedule, payment and next steps.</span>
-          </div>
-          <button class="btn btn-primary submit-btn" id="submitBtn" type="submit">Submit Registration →</button>
-        </div>
-      </form>
-
-      <div class="success-card" id="successCard" aria-live="polite">
-        <div class="success-icon">✓</div>
-        <div class="register-kicker">Registration complete</div>
-        <h2>Thank you for registering with BotNest Academy! 🎉</h2>
-        <p>We have received your registration. Our team will contact you on the scheduled date and time you selected regarding the course schedule, payment and next steps.</p>
-        <div class="success-meta">
-          <span id="successCourse">Course</span>
-          <span id="successLevel">Level</span>
-          <span id="successContact">Contact time</span>
-        </div>
-        <div class="success-actions">
-          <a class="btn btn-primary wa-btn" id="successWhatsApp" href="#" target="_blank" rel="noopener">WhatsApp BotNest →</a>
-          <a class="btn btn-ghost" href="index.html">Back to Home</a>
-        </div>
-      </div>
-
-      <div class="privacy-note">
-        By submitting this form, you provide your details to BotNest Academy for course registration and follow-up communication. No payment is collected through this registration form.
-      </div>
-    </section>
-  </main>
-
-  <script src="register.js"></script>
+<div id="successCard" class="success-card">
+<div class="success-icon">✓</div><div class="register-kicker">Registration complete</div>
+<h2>Thank you for registering with BotNest Academy! 🎉</h2>
+<p>We have received your registration. Our team will contact you on the scheduled date and time you selected regarding the course schedule, payment and next steps.</p>
+<div class="success-meta"><span id="successCourse">Course</span><span id="successLevel">Level</span><span id="successContact">Contact time</span></div>
+<div class="success-actions"><a id="successWhatsApp" class="wa-btn" href="#" target="_blank" rel="noopener">WhatsApp BotNest →</a><a class="home-btn" href="index.html">Back to Home</a></div>
+</div>
+<div class="privacy-note">By submitting this form, you provide your details to BotNest Academy for course registration and follow-up communication. No payment is collected through this registration form.</div>
+</section>
+</main>
+<script src="register.js?v=2"></script>
 </body>
 </html>
