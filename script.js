@@ -1,60 +1,16 @@
-const menuBtn = document.getElementById("menuBtn");
-const nav = document.getElementById("nav");
-const scrollProgress = document.getElementById("scrollProgress");
-
-menuBtn?.addEventListener("click", () => {
-  nav?.classList.toggle("open");
-});
-
-document.querySelectorAll(".nav a").forEach(link => {
-  link.addEventListener("click", () => nav?.classList.remove("open"));
-});
-
-// Reveal sections and cards as they enter the viewport.
-const revealItems = document.querySelectorAll(
-  ".section, .stats-strip, .program-card, .why-item, .journey-step, .project-card, .cta-section, .contact-card"
-);
-revealItems.forEach((el, index) => {
-  el.classList.add("reveal");
-  if (index % 4 !== 0) el.classList.add(`reveal-delay-${(index % 4)}`);
-});
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-  revealItems.forEach(el => observer.observe(el));
-} else {
-  revealItems.forEach(el => el.classList.add("is-visible"));
-}
-
-function updateScrollEffects() {
-  const scrollTop = window.scrollY;
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  if (scrollProgress) scrollProgress.style.width = `${maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0}%`;
-
-  const x = (window.innerWidth / 2 - window.scrollX * 0.02) / 30;
-  document.querySelectorAll(".orb").forEach((orb, i) => {
-    const speed = i === 0 ? 0.12 : -0.08;
-    orb.style.transform = `translate3d(${x * speed}px, ${-scrollTop * speed}px, 0)`;
-  });
-}
-
-let ticking = false;
-window.addEventListener("scroll", () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      updateScrollEffects();
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, { passive: true });
-updateScrollEffects();
-
-document.getElementById("year").textContent = new Date().getFullYear();
+const PROGRAMS=[
+{name:"Robotics",icon:"🤖",desc:"Learn electronics, sensors, actuators, programming and robotics through practical projects."},
+{name:"IoT",icon:"🌐",desc:"Build connected devices using microcontrollers, sensors, networking and cloud concepts."},
+{name:"Artificial Intelligence",icon:"🧠",desc:"Explore AI concepts, problem solving, data and practical intelligent applications."},
+{name:"Machine Learning",icon:"📊",desc:"Understand data, features, models and the foundations of machine learning."},
+{name:"Deep Learning",icon:"⚡",desc:"Explore neural networks and modern deep-learning concepts through guided projects."},
+{name:"Automation",icon:"⚙️",desc:"Combine controllers, sensors and automation logic to solve real-world problems."}
+];
+const grid=document.getElementById("programGrid");
+if(grid){grid.innerHTML=PROGRAMS.map((p,i)=>`<article class="program-card reveal"><div class="eyebrow">${String(i+1).padStart(2,"0")} / PROGRAM</div><h3>${p.icon} ${p.name}</h3><p>${p.desc}</p><div class="levels"><span class="level">Beginner</span><span class="level">Intermediate</span><span class="level">Expert</span></div><a class="program-link" href="course.html?course=${encodeURIComponent(p.name)}">Explore ${p.name} →</a></article>`).join("")}
+const menuBtn=document.getElementById("menuBtn"),nav=document.getElementById("nav"),progress=document.getElementById("scrollProgress");
+menuBtn?.addEventListener("click",()=>nav?.classList.toggle("open"));
+document.querySelectorAll(".nav a").forEach(a=>a.addEventListener("click",()=>nav?.classList.remove("open")));
+function reveal(){document.querySelectorAll(".reveal").forEach((el,i)=>{if(el.getBoundingClientRect().top<innerHeight*.9)el.classList.add("is-visible")})}
+addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(scrollY/h*100)+"%";reveal()},{passive:true});reveal();
+document.getElementById("year").textContent=new Date().getFullYear();
