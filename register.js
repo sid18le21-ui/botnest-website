@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // =====================================================
 
   const BACKEND_URL =
-    "https://script.google.com/macros/s/AKfycbw-1JnFHUhbeA8DbpTVtk6vSie1P__TZx5Ac2qQkQbjg8eGeW32ey24qORym6duJEyifw/exec";
+    "https://script.google.com/macros/s/AKfycbxQulaFjq0dKw4HqVn1Zz32VNWmYUwPMiTU6BELDEkRahQpllvbH2jW12ndl--qTkDZ/exec";
 
 
   // =====================================================
