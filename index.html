@@ -1,209 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BotNest Academy — Learn Robotics, IoT, AI and emerging technologies through hands-on projects.">
-  <meta name="theme-color" content="#070914">
-  <title>BotNest Academy | Explore. Engineer. Elevate.</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BotNest Academy — Robotics, IoT, AI, Machine Learning and Deep Learning programs.">
+<meta name="theme-color" content="#070914">
+<title>BotNest Academy | Explore. Engineer. Elevate.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="bg-grid"></div>
-  <div class="orb orb-one"></div>
-  <div class="orb orb-two"></div>
+<div class="scroll-progress" id="scrollProgress"></div><div class="bg-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+<header class="site-header">
+<a class="brand" href="index.html"><img src="assets/botnest-logo.jpg" alt="BotNest Academy logo"><span>BOTNEST</span></a>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+<nav class="nav" id="nav"><a href="#programs">Programs</a><a href="#why">Why BotNest</a><a href="#journey">Learning Journey</a><a href="#projects">Projects</a><a class="nav-cta" href="#programs">Explore Courses</a></nav>
+</header>
+<main>
+<section class="hero section" id="home">
+<div class="hero-copy reveal"><span class="eyebrow">FUTURE-READY TECHNOLOGY EDUCATION</span><h1>Build skills.<br><span>Build the future.</span></h1><p>Hands-on learning in Robotics, IoT, AI, Machine Learning, Deep Learning and emerging technologies — designed to turn curiosity into real projects.</p><div class="hero-actions"><a class="btn primary" href="#programs">Explore Programs <span>→</span></a><a class="btn ghost" href="#journey">See Learning Journey</a></div></div>
+<div class="hero-visual reveal"><div class="tech-core"><div class="core-ring r1"></div><div class="core-ring r2"></div><div class="core-ring r3"></div><div class="core-center">BN</div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><i class="node n5"></i></div></div>
+</section>
+<section class="stats-strip section"><div><strong>Project-Based</strong><span>Learn by building</span></div><div><strong>3 Levels</strong><span>Beginner → Expert</span></div><div><strong>Future Skills</strong><span>Technology focused</span></div><div><strong>Mentor Support</strong><span>Guided learning</span></div></section>
 
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="BotNest Academy home">
-      <img src="assets/botnest-logo.jpg" alt="BotNest Academy logo">
-      <span>BOTNEST</span>
-    </a>
-    <nav class="nav" id="nav">
-      <a href="#programs">Programs</a>
-      <a href="#why">Why BotNest</a>
-      <a href="#journey">Learning Journey</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Enroll Now <span>↗</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-  </header>
+<section class="section" id="programs">
+<div class="section-heading reveal"><span class="eyebrow">PROGRAMS</span><h2>Choose your <span>learning path.</span></h2><p>Explore a subject, choose your level, view the curriculum and register when you're ready.</p></div>
+<div class="program-grid" id="programGrid"></div>
+</section>
 
-  <main id="home">
-    <section class="hero section">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span> FUTURE-READY SKILLS FOR THE NEXT GENERATION</div>
-        <h1>Build the future.<br><em>Don't just watch it.</em></h1>
-        <p class="hero-text">
-          Hands-on learning in <strong>Robotics, IoT, AI & Coding</strong> designed to turn curious students into confident builders, creators and problem-solvers.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#programs">Explore Programs <span>→</span></a>
-          <a class="btn btn-ghost" href="#projects">See What We Build</a>
-        </div>
-        <div class="hero-proof">
-          <div><strong>PROJECT</strong><span>BASED</span></div>
-          <div><strong>HANDS-ON</strong><span>LEARNING</span></div>
-          <div><strong>FUTURE</strong><span>SKILLS</span></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="tech-ring ring-a"></div>
-        <div class="tech-ring ring-b"></div>
-        <div class="tech-card">
-          <div class="tech-top"><span>BOTNEST // LAB</span><span class="live-dot">● LIVE</span></div>
-          <div class="brain-placeholder">
-            <div class="node n1"></div><div class="node n2"></div><div class="node n3"></div>
-            <div class="node n4"></div><div class="node n5"></div><div class="node n6"></div>
-            <div class="node n7"></div><div class="node n8"></div>
-            <div class="connection c1"></div><div class="connection c2"></div><div class="connection c3"></div>
-            <div class="connection c4"></div><div class="connection c5"></div><div class="connection c6"></div>
-            <div class="core">BN</div>
-          </div>
-          <div class="tech-bottom">
-            <span>LEARN</span><span>BUILD</span><span>INNOVATE</span>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="section" id="why"><div class="section-heading reveal"><span class="eyebrow">WHY BOTNEST</span><h2>Learning designed to become <span>doing.</span></h2></div>
+<div class="why-grid"><article class="why-item reveal"><b>01</b><h3>Build, don't just watch</h3><p>Projects and practical activities help students turn concepts into working prototypes.</p></article><article class="why-item reveal"><b>02</b><h3>Structured progression</h3><p>Beginner, Intermediate and Expert pathways create a clear learning progression.</p></article><article class="why-item reveal"><b>03</b><h3>Future-ready skills</h3><p>Learn technologies connected to robotics, connected devices and intelligent systems.</p></article></div></section>
 
-    <section class="stats-strip">
-      <div><strong>01</strong><span>Learn by doing</span></div>
-      <div><strong>02</strong><span>Build real projects</span></div>
-      <div><strong>03</strong><span>Develop future skills</span></div>
-      <div><strong>04</strong><span>Create with confidence</span></div>
-    </section>
+<section class="section" id="journey"><div class="section-heading reveal"><span class="eyebrow">LEARNING JOURNEY</span><h2>From <span>curiosity</span> to capability.</h2></div>
+<div class="journey"><div class="journey-step reveal"><span>01</span><h3>Explore</h3><p>Discover concepts, components and real-world applications.</p></div><div class="journey-step reveal"><span>02</span><h3>Engineer</h3><p>Practice through guided labs, coding and hands-on projects.</p></div><div class="journey-step reveal"><span>03</span><h3>Create</h3><p>Build projects that combine hardware, software and problem solving.</p></div><div class="journey-step reveal"><span>04</span><h3>Elevate</h3><p>Progress to advanced concepts and increasingly independent projects.</p></div></div></section>
 
-    <section class="section" id="programs">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">01 / PROGRAMS</div>
-          <h2>Technology that feels <em>exciting.</em></h2>
-        </div>
-        <p>Move beyond textbooks. Students learn concepts, build prototypes and understand how technology works in the real world.</p>
-      </div>
-      <div class="program-grid">
-        <article class="program-card featured">
-          <div class="card-number">01</div><div class="icon">🤖</div>
-          <h3>Robotics</h3><p>Build robots, understand electronics, sensors, motors and automation while solving real-world challenges.</p>
-          <a href="#contact">Explore →</a>
-        </article>
-        <article class="program-card">
-          <div class="card-number">02</div><div class="icon">🌐</div>
-          <h3>Internet of Things</h3><p>Connect sensors, microcontrollers and devices to create smart connected systems.</p>
-          <a href="#contact">Explore →</a>
-        </article>
-        <article class="program-card">
-          <div class="card-number">03</div><div class="icon">🧠</div>
-          <h3>AI & Machine Learning</h3><p>Discover how intelligent systems work and turn ideas into practical AI projects.</p>
-          <a href="#contact">Explore →</a>
-        </article>
-        <article class="program-card">
-          <div class="card-number">04</div><div class="icon">💻</div>
-          <h3>Coding & Development</h3><p>Learn programming fundamentals and build websites, applications and digital projects.</p>
-          <a href="#contact">Explore →</a>
-        </article>
-        <article class="program-card">
-          <div class="card-number">05</div><div class="icon">⚡</div>
-          <h3>Automation</h3><p>Explore smart homes, control systems and the technologies powering modern automation.</p>
-          <a href="#contact">Explore →</a>
-        </article>
-        <article class="program-card">
-          <div class="card-number">06</div><div class="icon">🚀</div>
-          <h3>Innovation Workshops</h3><p>Short, high-energy workshops designed to introduce emerging technology through making.</p>
-          <a href="#contact">Explore →</a>
-        </article>
-      </div>
-    </section>
+<section class="section" id="projects"><div class="section-heading reveal"><span class="eyebrow">PROJECT LAB</span><h2>Make something <span>real.</span></h2></div>
+<div class="project-grid"><article class="project-card reveal"><span>ROBOTICS</span><h3>Autonomous Systems</h3><p>Explore sensors, motors, control logic and robotic decision making.</p></article><article class="project-card reveal"><span>IoT</span><h3>Connected Devices</h3><p>Connect sensors, microcontrollers, dashboards and cloud services.</p></article><article class="project-card reveal"><span>AI</span><h3>Intelligent Applications</h3><p>Understand data, models and practical AI applications.</p></article></div></section>
 
-    <section class="section why-section" id="why">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">02 / WHY BOTNEST</div>
-          <h2>From <em>curiosity</em> to creation.</h2>
-        </div>
-      </div>
-      <div class="why-layout">
-        <div class="why-image">
-          <div class="image-frame">
-            <img src="assets/botnest-logo.jpg" alt="BotNest Academy">
-            <div class="image-overlay">EXPLORE<br>ENGINEER<br>ELEVATE</div>
-          </div>
-        </div>
-        <div class="why-list">
-          <div class="why-item"><span>01</span><div><h3>Project-first learning</h3><p>Concepts become meaningful when students use them to build something.</p></div></div>
-          <div class="why-item"><span>02</span><div><h3>Real hardware experience</h3><p>Work with sensors, microcontrollers, motors and connected devices.</p></div></div>
-          <div class="why-item"><span>03</span><div><h3>Future-focused curriculum</h3><p>Introduce students to technologies shaping engineering and industry.</p></div></div>
-          <div class="why-item"><span>04</span><div><h3>Confidence through making</h3><p>Students experiment, debug, present and improve their own creations.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section journey-section" id="journey">
-      <div class="eyebrow">03 / LEARNING JOURNEY</div>
-      <h2>Learn. Build. <em>Elevate.</em></h2>
-      <div class="journey">
-        <div class="journey-step"><div class="step-circle">01</div><h3>Explore</h3><p>Discover how technology works.</p></div>
-        <div class="journey-line"></div>
-        <div class="journey-step"><div class="step-circle">02</div><h3>Engineer</h3><p>Turn concepts into working prototypes.</p></div>
-        <div class="journey-line"></div>
-        <div class="journey-step"><div class="step-circle">03</div><h3>Experiment</h3><p>Test, debug and improve your ideas.</p></div>
-        <div class="journey-line"></div>
-        <div class="journey-step"><div class="step-circle">04</div><h3>Elevate</h3><p>Present your work and think bigger.</p></div>
-      </div>
-    </section>
-
-    <section class="section projects-section" id="projects">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">04 / PROJECT LAB</div>
-          <h2>Ideas become <em>working prototypes.</em></h2>
-        </div>
-        <p>A glimpse of the kind of hands-on technology students can explore.</p>
-      </div>
-      <div class="project-grid">
-        <div class="project-card p1"><span>ROBOTICS</span><h3>Autonomous Robots</h3><p>Sensors • Motors • Embedded Systems</p></div>
-        <div class="project-card p2"><span>IoT</span><h3>Smart Systems</h3><p>ESP32 • Sensors • Cloud Connectivity</p></div>
-        <div class="project-card p3"><span>AI</span><h3>Intelligent Applications</h3><p>Machine Learning • Computer Vision</p></div>
-        <div class="project-card p4"><span>AUTOMATION</span><h3>Smart Environments</h3><p>Control • Monitoring • Voice & App</p></div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="cta-glow"></div>
-      <div class="eyebrow">READY TO BUILD?</div>
-      <h2>Your child's next big idea<br>could start <em>here.</em></h2>
-      <p>Give young innovators the opportunity to explore technology through hands-on learning.</p>
-      <a class="btn btn-primary" href="#contact">Start the Journey <span>→</span></a>
-    </section>
-
-    <section class="section contact-section" id="contact">
-      <div class="contact-card">
-        <div>
-          <div class="eyebrow">05 / GET STARTED</div>
-          <h2>Let's build something<br><em>extraordinary.</em></h2>
-          <p>Interested in a program, workshop or school/college collaboration? Get in touch with BotNest Academy.</p>
-        </div>
-        <div class="contact-details">
-          <a href="https://wa.me/918939129382?text=Hi%20BotNest%20Academy%2C%20I%20would%20like%20to%20know%20more%20about%20your%20programs." class="contact-link whatsapp-link" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>Chat with us ↗</strong></a>
-          <a href="mailto:hello@botnest.in" class="contact-link"><span>Email</span><strong>hello@botnest.in ↗</strong></a>
-          <a href="https://botnest.in" class="contact-link"><span>Website</span><strong>botnest.in ↗</strong></a>
-        </div>
-      </div>
-    </section>
-    <a class="whatsapp-float" href="https://wa.me/918939129382?text=Hi%20BotNest%20Academy%2C%20I%20would%20like%20to%20know%20more%20about%20your%20programs." target="_blank" rel="noopener noreferrer" aria-label="Chat with BotNest Academy on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.4 12.4 0 0 0 5.25 22.1L3.5 28.5l6.58-1.72A12.5 12.5 0 1 0 16 3.5Zm0 22.4a9.86 9.86 0 0 1-5.02-1.37l-.36-.22-3.9 1.02 1.04-3.79-.24-.39A9.86 9.86 0 1 1 16 25.9Zm5.43-7.38c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35Z"/></svg><span>Chat on WhatsApp</span></a>
-  </main>
-
-  <footer>
-    <div class="footer-brand">
-      <span>BOTNEST</span>
-      <small>Academy</small>
-    </div>
-    <p>Explore. Engineer. Elevate.</p>
-    <p>© <span id="year"></span> BotNest Academy. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<section class="cta-section section reveal"><div><span class="eyebrow">READY TO START?</span><h2>Find the right course for the next step.</h2><p>Choose a program, review the curriculum and submit your registration. Our team will contact you at your preferred time.</p></div><a class="btn primary" href="#programs">Explore Courses →</a></section>
+</main>
+<footer><div><strong>BOTNEST Academy</strong><span>Explore, Engineer, Elevate.</span></div><div>© <span id="year"></span> BotNest Academy</div></footer>
+<script src="script.js"></script>
+</body></html>
