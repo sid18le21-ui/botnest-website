@@ -10,77 +10,332 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =====================================================
+  // GOOGLE AUTHENTICATION STATE
+  // =====================================================
+
+  let googleAuth = {
+    signedIn: false,
+    idToken: "",
+    googleId: "",
+    email: "",
+    name: "",
+    picture: ""
+  };
+
+
+  // =====================================================
+  // GOOGLE SIGN-IN CALLBACK
+  // =====================================================
+
+  window.handleGoogleCredential = function (response) {
+
+    try {
+
+      if (!response || !response.credential) {
+        throw new Error("Google did not return an authentication credential.");
+      }
+
+      const idToken = response.credential;
+
+      /*
+       * Google Identity Services returns a JWT.
+       * We decode the payload locally only to display the
+       * user's basic information.
+       *
+       * IMPORTANT:
+       * The token will also be sent to Apps Script.
+       * The backend will perform the actual verification.
+       */
+
+      const parts = idToken.split(".");
+
+      if (parts.length !== 3) {
+        throw new Error("Invalid Google credential.");
+      }
+
+      const payload = JSON.parse(
+        decodeURIComponent(
+          atob(parts[1])
+            .split("")
+            .map(function (char) {
+              return "%" + ("00" + char.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+        )
+      );
+
+
+      // -----------------------------------------------
+      // STORE GOOGLE ACCOUNT
+      // -----------------------------------------------
+
+      googleAuth.signedIn = true;
+      googleAuth.idToken = idToken;
+      googleAuth.googleId = payload.sub || "";
+      googleAuth.email = payload.email || "";
+      googleAuth.name = payload.name || "";
+      googleAuth.picture = payload.picture || "";
+
+
+      // -----------------------------------------------
+      // UPDATE GOOGLE STATUS
+      // -----------------------------------------------
+
+      const googleStatus = $("googleStatus");
+
+      if (googleStatus) {
+
+        googleStatus.textContent =
+          "Google account verified. Your registration will be associated with this account.";
+
+        googleStatus.style.color = "#65f5b0";
+
+      }
+
+
+      // -----------------------------------------------
+      // SHOW GOOGLE USER CARD
+      // -----------------------------------------------
+
+      const googleUser = $("googleUser");
+
+      if (googleUser) {
+        googleUser.classList.add("show");
+      }
+
+
+      if ($("googleUserName")) {
+
+        $("googleUserName").textContent =
+          googleAuth.name || "Google Account";
+
+      }
+
+
+      if ($("googleUserEmail")) {
+
+        $("googleUserEmail").textContent =
+          googleAuth.email || "";
+
+      }
+
+
+      if ($("googleUserPicture") && googleAuth.picture) {
+
+        $("googleUserPicture").src =
+          googleAuth.picture;
+
+      }
+
+
+      // -----------------------------------------------
+      // PREFILL EMAIL
+      // -----------------------------------------------
+
+      const emailField = $("email");
+
+      if (
+        emailField &&
+        googleAuth.email
+      ) {
+
+        emailField.value =
+          googleAuth.email;
+
+        emailField.dispatchEvent(
+          new Event("input", {
+            bubbles: true
+          })
+        );
+
+      }
+
+
+      // -----------------------------------------------
+      // UPDATE GOOGLE BUTTON AREA
+      // -----------------------------------------------
+
+      const googleSignInBtn =
+        $("googleSignInBtn");
+
+      if (googleSignInBtn) {
+
+        googleSignInBtn.style.opacity = "0.65";
+
+      }
+
+
+    } catch (error) {
+
+      console.error(
+        "Google authentication error:",
+        error
+      );
+
+
+      googleAuth = {
+        signedIn: false,
+        idToken: "",
+        googleId: "",
+        email: "",
+        name: "",
+        picture: ""
+      };
+
+
+      if ($("googleStatus")) {
+
+        $("googleStatus").textContent =
+          "Google sign-in could not be completed. Please try again.";
+
+        $("googleStatus").style.color =
+          "#ff8dbb";
+
+      }
+
+    }
+
+  };
+
+
+  // =====================================================
   // COURSE / LEVEL
   // =====================================================
 
-  const params = new URLSearchParams(window.location.search);
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
 
   const courseMap = {
+
     robotics: "Robotics",
+
     iot: "IoT",
+
     ai: "AI",
+
     ml: "Machine Learning",
-    "machine-learning": "Machine Learning",
+
+    "machine-learning":
+      "Machine Learning",
+
     dl: "Deep Learning",
-    "deep-learning": "Deep Learning",
+
+    "deep-learning":
+      "Deep Learning",
+
     automation: "Automation",
+
     coding: "Coding"
+
   };
+
 
   const levelMap = {
+
     beginner: "Beginner",
+
     intermediate: "Intermediate",
+
     expert: "Expert"
+
   };
 
-  const rawCourse = (params.get("course") || "Robotics").trim();
-  const rawLevel = (params.get("level") || "Beginner").trim();
+
+  const rawCourse =
+    (
+      params.get("course") ||
+      "Robotics"
+    ).trim();
+
+
+  const rawLevel =
+    (
+      params.get("level") ||
+      "Beginner"
+    ).trim();
+
 
   const course =
-    courseMap[rawCourse.toLowerCase().replace(/\s+/g, "-")] ||
+    courseMap[
+      rawCourse
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+    ] ||
     rawCourse;
 
+
   const level =
-    levelMap[rawLevel.toLowerCase()] ||
+    levelMap[
+      rawLevel.toLowerCase()
+    ] ||
     "Beginner";
 
 
-  const $ = id => document.getElementById(id);
+  const $ =
+    id => document.getElementById(id);
 
 
   // =====================================================
   // DISPLAY COURSE / LEVEL
   // =====================================================
 
-  $("courseName").textContent = course;
-  $("levelName").textContent = level;
-  $("courseTitle").textContent = course + " — " + level;
+  $("courseName").textContent =
+    course;
+
+
+  $("levelName").textContent =
+    level;
+
+
+  $("courseTitle").textContent =
+    course + " — " + level;
+
 
   $("backToCourse").href =
-    "course.html?course=" + encodeURIComponent(course);
+    "course.html?course=" +
+    encodeURIComponent(course);
 
 
   // =====================================================
   // PREREQUISITE LOGIC
   // =====================================================
 
-  let prerequisiteLevel = null;
+  let prerequisiteLevel =
+    null;
+
 
   if (level === "Intermediate") {
-    prerequisiteLevel = "Beginner";
+
+    prerequisiteLevel =
+      "Beginner";
+
   }
+
 
   if (level === "Expert") {
-    prerequisiteLevel = "Intermediate";
+
+    prerequisiteLevel =
+      "Intermediate";
+
   }
 
-  const prerequisiteArea = $("prerequisiteArea");
-  const submitBtn = $("submitBtn");
+
+  const prerequisiteArea =
+    $("prerequisiteArea");
+
+
+  const submitBtn =
+    $("submitBtn");
 
 
   if (prerequisiteLevel) {
 
-    prerequisiteArea.style.display = "block";
+    prerequisiteArea.style.display =
+      "block";
+
 
     $("prereqQuestion").innerHTML =
       "Have you already completed a " +
@@ -111,11 +366,15 @@ document.addEventListener("DOMContentLoaded", function () {
       "course.html?course=" +
       encodeURIComponent(course) +
       "&level=" +
-      encodeURIComponent(prerequisiteLevel);
+      encodeURIComponent(
+        prerequisiteLevel
+      );
 
 
     document
-      .querySelectorAll('input[name="prerequisite"]')
+      .querySelectorAll(
+        'input[name="prerequisite"]'
+      )
       .forEach(function (radio) {
 
         radio.addEventListener(
@@ -126,15 +385,23 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
 
-    submitBtn.disabled = true;
+    submitBtn.disabled =
+      true;
+
 
     updatePrerequisite();
+
 
   } else {
 
     // Beginner has NO prerequisite question.
-    prerequisiteArea.style.display = "none";
-    submitBtn.disabled = false;
+
+    prerequisiteArea.style.display =
+      "none";
+
+
+    submitBtn.disabled =
+      false;
 
   }
 
@@ -149,15 +416,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (selected === "No") {
 
-      $("prereqWarning").classList.add("show");
-      $("blockedNote").classList.add("show");
+      $("prereqWarning")
+        .classList.add("show");
 
-      submitBtn.disabled = true;
+
+      $("blockedNote")
+        .classList.add("show");
+
+
+      submitBtn.disabled =
+        true;
+
 
     } else {
 
-      $("prereqWarning").classList.remove("show");
-      $("blockedNote").classList.remove("show");
+      $("prereqWarning")
+        .classList.remove("show");
+
+
+      $("blockedNote")
+        .classList.remove("show");
+
 
       submitBtn.disabled =
         selected !== "Yes";
@@ -173,6 +452,7 @@ document.addEventListener("DOMContentLoaded", function () {
           course +
           " learning and projects."
         : "Share the student's previous learning experience.";
+
   }
 
 
@@ -180,29 +460,36 @@ document.addEventListener("DOMContentLoaded", function () {
   // MINIMUM CONTACT DATE
   // =====================================================
 
-  const now = new Date();
+  const now =
+    new Date();
+
 
   $("contactDate").min =
     now.getFullYear() +
     "-" +
-    String(now.getMonth() + 1).padStart(2, "0") +
+    String(
+      now.getMonth() + 1
+    ).padStart(2, "0") +
     "-" +
-    String(now.getDate()).padStart(2, "0");
+    String(
+      now.getDate()
+    ).padStart(2, "0");
 
 
   // =====================================================
-  // GOOGLE SIGN-IN
+  // GOOGLE SIGN-IN STATUS
   // =====================================================
 
-  $("googleSignInBtn").addEventListener(
-    "click",
-    function () {
-
-      $("googleStatus").textContent =
-        "Google sign-in will be connected after the registration system is fully tested.";
-
-    }
-  );
+  /*
+   * The actual Google button is rendered by
+   * Google Identity Services in register.html.
+   *
+   * The callback is:
+   *
+   * window.handleGoogleCredential
+   *
+   * defined above.
+   */
 
 
   // =====================================================
@@ -215,7 +502,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       event.preventDefault();
 
-      $("errorBox").classList.remove("show");
+
+      $("errorBox")
+        .classList.remove("show");
 
 
       // -----------------------------------------------
@@ -237,6 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           return;
+
         }
 
 
@@ -252,9 +542,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "."
           );
 
+
           updatePrerequisite();
 
           return;
+
         }
 
       }
@@ -264,11 +556,31 @@ document.addEventListener("DOMContentLoaded", function () {
       // HTML FORM VALIDATION
       // -----------------------------------------------
 
-      if (!$("registrationForm").checkValidity()) {
+      if (
+        !$("registrationForm")
+          .checkValidity()
+      ) {
 
-        $("registrationForm").reportValidity();
+        $("registrationForm")
+          .reportValidity();
 
         return;
+
+      }
+
+
+      // -----------------------------------------------
+      // GOOGLE SIGN-IN CHECK
+      // -----------------------------------------------
+
+      if (!googleAuth.signedIn) {
+
+        showError(
+          "Please continue with Google before submitting your registration."
+        );
+
+        return;
+
       }
 
 
@@ -286,9 +598,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const registrationData = {
 
-        course: course,
+        course:
+          course,
 
-        level: level,
+        level:
+          level,
 
         studentName:
           formData.studentName || "",
@@ -338,7 +652,24 @@ document.addEventListener("DOMContentLoaded", function () {
         submittedAt:
           new Date().toISOString(),
 
-        website: ""
+        website: "",
+
+
+        // ---------------------------------------------
+        // GOOGLE ACCOUNT INFORMATION
+        // ---------------------------------------------
+
+        googleIdToken:
+          googleAuth.idToken || "",
+
+        googleId:
+          googleAuth.googleId || "",
+
+        googleEmail:
+          googleAuth.email || "",
+
+        googleName:
+          googleAuth.name || ""
 
       };
 
@@ -350,7 +681,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const originalButtonText =
         submitBtn.textContent;
 
-      submitBtn.disabled = true;
+
+      submitBtn.disabled =
+        true;
+
 
       submitBtn.textContent =
         "Submitting registration…";
@@ -373,19 +707,23 @@ document.addEventListener("DOMContentLoaded", function () {
         await fetch(
           BACKEND_URL,
           {
+
             method: "POST",
 
             mode: "no-cors",
 
             headers: {
+
               "Content-Type":
                 "text/plain;charset=utf-8"
+
             },
 
             body:
               JSON.stringify(
                 registrationData
               )
+
           }
         );
 
@@ -412,7 +750,9 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        submitBtn.disabled = false;
+        submitBtn.disabled =
+          false;
+
 
         submitBtn.textContent =
           originalButtonText;
@@ -429,36 +769,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showSuccess(data) {
 
-    $("registrationForm").style.display =
-      "none";
-
-    $("successCard").classList.add(
-      "show"
-    );
+    $("registrationForm")
+      .style.display = "none";
 
 
-    $("successCourse").textContent =
+    $("successCard")
+      .classList.add("show");
+
+
+    $("successCourse")
+      .textContent =
       data.course;
 
 
-    $("successLevel").textContent =
+    $("successLevel")
+      .textContent =
       data.level + " Level";
 
 
     const dateText =
       new Date(
-        data.contactDate + "T00:00:00"
+        data.contactDate +
+        "T00:00:00"
       ).toLocaleDateString(
         "en-IN",
         {
+
           day: "numeric",
+
           month: "short",
+
           year: "numeric"
+
         }
       );
 
 
-    $("successContact").textContent =
+    $("successContact")
+      .textContent =
       dateText +
       " • " +
       data.contactTime;
@@ -490,8 +838,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     window.scrollTo({
+
       top: 0,
+
       behavior: "smooth"
+
     });
 
   }
@@ -503,12 +854,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showError(message) {
 
-    $("errorBox").textContent =
+    $("errorBox")
+      .textContent =
       message;
 
-    $("errorBox").classList.add(
-      "show"
-    );
+
+    $("errorBox")
+      .classList.add("show");
 
   }
 
@@ -524,11 +876,17 @@ document.addEventListener("DOMContentLoaded", function () {
       function (char) {
 
         return {
+
           "&": "&amp;",
+
           "<": "&lt;",
+
           ">": "&gt;",
+
           '"': "&quot;",
+
           "'": "&#039;"
+
         }[char];
 
       }
