@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="BotNest Academy administration dashboard."
+  >
+
+  <title>Admin Dashboard | BotNest Academy</title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+</head>
+
+<body class="admin-page">
+
+
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+
+  <header class="site-header">
+
+    <div class="container nav-wrap">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="assets/botnest-logo.jpg"
+          alt="BotNest Academy"
+        >
+
+        <div class="brand-text">
+          <strong>BOTNEST</strong>
+          <span>ACADEMY</span>
+        </div>
+
+      </a>
+
+
+      <div class="dashboard-nav">
+
+        <a href="index.html">
+          Website
+        </a>
+
+        <button
+          type="button"
+          id="adminLogoutButton"
+          class="nav-logout"
+          hidden
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN
+       ========================================================= -->
+
+  <main class="admin-main">
+
+    <div class="container admin-shell">
+
+
+      <!-- =======================================================
+           ADMIN LOGIN
+           ======================================================= -->
+
+      <section
+        id="adminLoginSection"
+        class="admin-login-section"
+      >
+
+        <div class="auth-card admin-auth-card">
+
+          <div class="auth-icon">
+            ⚙
+          </div>
+
+          <p class="eyebrow">
+            BOTNEST ACADEMY
+          </p>
+
+          <h1>
+            Admin Portal
+          </h1>
+
+          <p class="auth-description">
+            Sign in to manage registrations,
+            attendance and student progress.
+          </p>
+
+
+          <div
+            id="adminLoginError"
+            class="form-alert error-alert"
+            hidden
+          ></div>
+
+
+          <form
+            id="adminLoginForm"
+            class="auth-form"
+            novalidate
+          >
+
+            <div class="field">
+
+              <label for="adminEmail">
+                Admin Email
+              </label>
+
+              <input
+                type="email"
+                id="adminEmail"
+                value="botnest.officials@gmail.com"
+                autocomplete="username"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="adminPassword">
+                Password
+              </label>
+
+              <input
+                type="password"
+                id="adminPassword"
+                autocomplete="current-password"
+                placeholder="Enter admin password"
+                required
+              >
+
+            </div>
+
+
+            <button
+              type="submit"
+              id="adminLoginButton"
+              class="btn btn-primary auth-submit"
+            >
+
+              <span id="adminLoginText">
+                Admin Login
+              </span>
+
+              <span
+                id="adminLoginLoader"
+                hidden
+              >
+                Signing in...
+              </span>
+
+            </button>
+
+          </form>
+
+
+          <div class="auth-footer">
+
+            <a href="index.html">
+              ← Return to website
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =======================================================
+           ADMIN DASHBOARD
+           ======================================================= -->
+
+      <section
+        id="adminDashboardSection"
+        hidden
+      >
+
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="admin-heading">
+
+          <div>
+
+            <p class="eyebrow">
+              CONTROL CENTER
+            </p>
+
+            <h1>
+              Admin Dashboard
+            </h1>
+
+            <p>
+              Manage student registrations,
+              attendance and learning progress.
+            </p>
+
+          </div>
+
+
+          <div class="admin-identity">
+
+            <span>
+              ADMIN
+            </span>
+
+            <strong>
+              botnest.officials@gmail.com
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= ERROR ================= -->
+
+        <div
+          id="adminDashboardError"
+          class="form-alert error-alert"
+          hidden
+        ></div>
+
+
+        <!-- =====================================================
+             STATISTICS
+             ===================================================== -->
+
+        <section class="admin-stats-grid">
+
+
+          <div class="admin-stat-card">
+
+            <span>
+              TOTAL REGISTRATIONS
+            </span>
+
+            <strong id="totalRegistrations">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="admin-stat-card">
+
+            <span>
+              NEW
+            </span>
+
+            <strong id="newRegistrations">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="admin-stat-card">
+
+            <span>
+              CONTACTED
+            </span>
+
+            <strong id="contactedRegistrations">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="admin-stat-card">
+
+            <span>
+              CONVERTED
+            </span>
+
+            <strong id="convertedRegistrations">
+              0
+            </strong>
+
+          </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             REGISTRATION MANAGEMENT
+             ===================================================== -->
+
+        <section class="admin-layout">
+
+
+          <!-- ===================================================
+               LEFT — REGISTRATION LIST
+               =================================================== -->
+
+          <div class="admin-list-panel">
+
+
+            <div class="admin-panel-header">
+
+              <div>
+
+                <p class="eyebrow">
+                  STUDENTS
+                </p>
+
+                <h2>
+                  Registrations
+                </h2>
+
+              </div>
+
+
+              <button
+                type="button"
+                id="refreshRegistrations"
+                class="small-button"
+              >
+                ↻ Refresh
+              </button>
+
+            </div>
+
+
+            <!-- Filters -->
+
+            <div class="admin-toolbar">
+
+              <input
+                type="search"
+                id="registrationSearch"
+                placeholder="Search student, course, email..."
+              >
+
+
+              <select
+                id="registrationStatusFilter"
+              >
+
+                <option value="">
+                  All Statuses
+                </option>
+
+                <option value="New">
+                  New
+                </option>
+
+                <option value="Contacted">
+                  Contacted
+                </option>
+
+                <option value="Follow-up">
+                  Follow-up
+                </option>
+
+                <option value="Converted">
+                  Converted
+                </option>
+
+                <option value="Not Interested">
+                  Not Interested
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <!-- Registration List -->
+
+            <div
+              id="registrationList"
+              class="registration-list"
+            >
+
+              <div class="empty-state">
+
+                <div>
+                  ◌
+                </div>
+
+                <h3>
+                  Loading registrations...
+                </h3>
+
+                <p>
+                  Please wait.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ===================================================
+               RIGHT — DETAILS
+               =================================================== -->
+
+          <div
+            id="adminDetailPanel"
+            class="admin-detail-panel"
+          >
+
+            <div class="admin-detail-empty">
+
+              <div class="admin-detail-icon">
+                ◈
+              </div>
+
+              <h2>
+                Select a Registration
+              </h2>
+
+              <p>
+                Select a student from the registration
+                list to view their information,
+                attendance and course progress.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </section>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+
+  <footer class="site-footer compact-footer">
+
+    <div class="container footer-bottom">
+
+      <p>
+        © <span id="year"></span>
+        BotNest Academy.
+        All rights reserved.
+      </p>
+
+      <p>
+        Admin Portal
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+
+</body>
+
+</html>
