@@ -1,44 +1,1330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BotNest Academy — Robotics, IoT, AI, Machine Learning and Deep Learning programs.">
-<meta name="theme-color" content="#070914">
-<title>BotNest Academy | Explore. Engineer. Elevate.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="BotNest Academy — Learn Robotics, IoT, Artificial Intelligence, Machine Learning, Deep Learning and Automation through practical technology education."
+  >
+
+  <meta
+    name="keywords"
+    content="BotNest Academy, Robotics, IoT, AI, Machine Learning, Deep Learning, Automation, Robotics Courses, IoT Courses"
+  >
+
+  <meta
+    name="theme-color"
+    content="#070914"
+  >
+
+  <title>
+    BotNest Academy | Explore. Engineer. Elevate.
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
 </head>
+
+
 <body>
-<div class="scroll-progress" id="scrollProgress"></div><div class="bg-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
-<header class="site-header">
-<a class="brand" href="index.html"><img src="assets/botnest-logo.jpg" alt="BotNest Academy logo"><span>BOTNEST</span></a>
-<button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-<nav class="nav" id="nav"><a href="#programs">Programs</a><a href="#why">Why BotNest</a><a href="#journey">Learning Journey</a><a href="#projects">Projects</a><a class="nav-cta" href="#programs">Explore Courses</a></nav>
-</header>
-<main>
-<section class="hero section" id="home">
-<div class="hero-copy reveal"><span class="eyebrow">FUTURE-READY TECHNOLOGY EDUCATION</span><h1>Build skills.<br><span>Build the future.</span></h1><p>Hands-on learning in Robotics, IoT, AI, Machine Learning, Deep Learning and emerging technologies — designed to turn curiosity into real projects.</p><div class="hero-actions"><a class="btn primary" href="#programs">Explore Programs <span>→</span></a><a class="btn ghost" href="#journey">See Learning Journey</a></div></div>
-<div class="hero-visual reveal"><div class="tech-core"><div class="core-ring r1"></div><div class="core-ring r2"></div><div class="core-ring r3"></div><div class="core-center">BN</div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><i class="node n5"></i></div></div>
-</section>
-<section class="stats-strip section"><div><strong>Project-Based</strong><span>Learn by building</span></div><div><strong>3 Levels</strong><span>Beginner → Expert</span></div><div><strong>Future Skills</strong><span>Technology focused</span></div><div><strong>Mentor Support</strong><span>Guided learning</span></div></section>
 
-<section class="section" id="programs">
-<div class="section-heading reveal"><span class="eyebrow">PROGRAMS</span><h2>Choose your <span>learning path.</span></h2><p>Explore a subject, choose your level, view the curriculum and register when you're ready.</p></div>
-<div class="program-grid" id="programGrid"></div>
-</section>
 
-<section class="section" id="why"><div class="section-heading reveal"><span class="eyebrow">WHY BOTNEST</span><h2>Learning designed to become <span>doing.</span></h2></div>
-<div class="why-grid"><article class="why-item reveal"><b>01</b><h3>Build, don't just watch</h3><p>Projects and practical activities help students turn concepts into working prototypes.</p></article><article class="why-item reveal"><b>02</b><h3>Structured progression</h3><p>Beginner, Intermediate and Expert pathways create a clear learning progression.</p></article><article class="why-item reveal"><b>03</b><h3>Future-ready skills</h3><p>Learn technologies connected to robotics, connected devices and intelligent systems.</p></article></div></section>
+  <!-- =========================================================
+       SCROLL PROGRESS
+       ========================================================= -->
 
-<section class="section" id="journey"><div class="section-heading reveal"><span class="eyebrow">LEARNING JOURNEY</span><h2>From <span>curiosity</span> to capability.</h2></div>
-<div class="journey"><div class="journey-step reveal"><span>01</span><h3>Explore</h3><p>Discover concepts, components and real-world applications.</p></div><div class="journey-step reveal"><span>02</span><h3>Engineer</h3><p>Practice through guided labs, coding and hands-on projects.</p></div><div class="journey-step reveal"><span>03</span><h3>Create</h3><p>Build projects that combine hardware, software and problem solving.</p></div><div class="journey-step reveal"><span>04</span><h3>Elevate</h3><p>Progress to advanced concepts and increasingly independent projects.</p></div></div></section>
+  <div
+    id="scrollProgress"
+    class="scroll-progress"
+  ></div>
 
-<section class="section" id="projects"><div class="section-heading reveal"><span class="eyebrow">PROJECT LAB</span><h2>Make something <span>real.</span></h2></div>
-<div class="project-grid"><article class="project-card reveal"><span>ROBOTICS</span><h3>Autonomous Systems</h3><p>Explore sensors, motors, control logic and robotic decision making.</p></article><article class="project-card reveal"><span>IoT</span><h3>Connected Devices</h3><p>Connect sensors, microcontrollers, dashboards and cloud services.</p></article><article class="project-card reveal"><span>AI</span><h3>Intelligent Applications</h3><p>Understand data, models and practical AI applications.</p></article></div></section>
 
-<section class="cta-section section reveal"><div><span class="eyebrow">READY TO START?</span><h2>Find the right course for the next step.</h2><p>Choose a program, review the curriculum and submit your registration. Our team will contact you at your preferred time.</p></div><a class="btn primary" href="#programs">Explore Courses →</a></section>
-</main>
-<footer><div><strong>BOTNEST Academy</strong><span>Explore, Engineer, Elevate.</span></div><div>© <span id="year"></span> BotNest Academy</div></footer>
-<script src="script.js"></script>
-</body></html>
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+
+  <header class="site-header">
+
+    <div class="container nav-wrap">
+
+
+      <!-- BRAND -->
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="BotNest Academy Home"
+      >
+
+        <img
+          src="assets/botnest-logo.jpg"
+          alt="BotNest Academy Logo"
+        >
+
+        <div class="brand-text">
+
+          <strong>
+            BOTNEST
+          </strong>
+
+          <span>
+            ACADEMY
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- MOBILE MENU -->
+
+      <button
+        type="button"
+        id="menuBtn"
+        class="menu-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+
+      <!-- NAVIGATION -->
+
+      <nav
+        id="mainNav"
+        class="main-nav"
+        aria-label="Main navigation"
+      >
+
+        <a href="#programs">
+          Programs
+        </a>
+
+        <a href="#why">
+          Why BotNest
+        </a>
+
+        <a href="#journey">
+          Learning Journey
+        </a>
+
+        <a href="#projects">
+          Projects
+        </a>
+
+
+        <div
+          id="navAccount"
+          class="nav-account"
+        >
+
+          <a
+            href="login.html"
+            class="nav-login"
+          >
+            Login
+          </a>
+
+          <a
+            href="signup.html"
+            class="nav-cta"
+          >
+            Create Account
+          </a>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+
+  <main>
+
+
+    <section
+      class="hero"
+      id="home"
+    >
+
+      <!-- Background decorative elements -->
+
+      <div class="hero-grid"></div>
+
+      <div class="hero-glow hero-glow-one"></div>
+
+      <div class="hero-glow hero-glow-two"></div>
+
+
+      <div class="container hero-inner">
+
+
+        <div
+          class="hero-content reveal reveal-left"
+        >
+
+          <div class="hero-badge">
+
+            <span class="status-dot"></span>
+
+            FUTURE-READY TECHNOLOGY EDUCATION
+
+          </div>
+
+
+          <p class="eyebrow">
+            EXPLORE · ENGINEER · ELEVATE
+          </p>
+
+
+          <h1>
+
+            Build the skills
+            <span class="gradient-text">
+              that build the future.
+            </span>
+
+          </h1>
+
+
+          <p class="hero-description">
+
+            Learn Robotics, IoT, Artificial Intelligence,
+            Machine Learning, Deep Learning and Automation
+            through practical, project-based learning.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              href="#programs"
+              class="btn btn-primary"
+            >
+              Explore Programs
+              <span>→</span>
+            </a>
+
+
+            <a
+              href="signup.html"
+              class="btn btn-secondary"
+            >
+              Create Account
+            </a>
+
+          </div>
+
+
+          <div class="hero-note">
+
+            <span>✦</span>
+
+            Learn by building real technology.
+
+          </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             HERO TECHNOLOGY CORE
+             ===================================================== -->
+
+        <div
+          class="hero-visual reveal reveal-right"
+        >
+
+          <div class="tech-orbit orbit-one"></div>
+
+          <div class="tech-orbit orbit-two"></div>
+
+          <div class="tech-orbit orbit-three"></div>
+
+
+          <div class="tech-core">
+
+            <div class="core-ring"></div>
+
+            <div class="core-ring core-ring-two"></div>
+
+
+            <div class="core-content">
+
+              <span class="core-symbol">
+                ⚡
+              </span>
+
+              <strong>
+                BOTNEST
+              </strong>
+
+              <small>
+                ACADEMY
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="floating-tech tech-one">
+            ROBOTICS
+          </div>
+
+          <div class="floating-tech tech-two">
+            IoT
+          </div>
+
+          <div class="floating-tech tech-three">
+            AI
+          </div>
+
+          <div class="floating-tech tech-four">
+            ML
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           HERO STATS
+           ===================================================== -->
+
+      <div class="container">
+
+        <div
+          class="hero-stats reveal reveal-up"
+        >
+
+          <div class="hero-stat">
+
+            <strong>
+              6+
+            </strong>
+
+            <span>
+              Technology Programs
+            </span>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <strong>
+              3
+            </strong>
+
+            <span>
+              Learning Levels
+            </span>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <strong>
+              100%
+            </strong>
+
+            <span>
+              Project Focused
+            </span>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <strong>
+              ∞
+            </strong>
+
+            <span>
+              Possibilities
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PROGRAMS
+         ========================================================= -->
+
+    <section
+      id="programs"
+      class="section section-programs"
+    >
+
+      <div class="container">
+
+
+        <div
+          class="section-heading reveal reveal-up"
+        >
+
+          <div>
+
+            <p class="eyebrow">
+              OUR PROGRAMS
+            </p>
+
+            <h2>
+              Learn the technologies
+              <span class="gradient-text">
+                shaping tomorrow.
+              </span>
+            </h2>
+
+          </div>
+
+
+          <p>
+
+            Structured learning paths designed to
+            take students from fundamentals to
+            practical technology projects.
+
+          </p>
+
+        </div>
+
+
+        <!-- PROGRAM GRID -->
+
+        <div
+          id="programGrid"
+          class="program-grid"
+        >
+
+          <!--
+            Program cards are generated by script.js.
+          -->
+
+          <div class="program-loading">
+
+            <div class="loading-orbit"></div>
+
+            <p>
+              Loading programs...
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         WHY BOTNEST
+         ========================================================= -->
+
+    <section
+      id="why"
+      class="section section-dark"
+    >
+
+      <div class="container">
+
+
+        <div
+          class="section-heading reveal reveal-up"
+        >
+
+          <div>
+
+            <p class="eyebrow">
+              WHY BOTNEST
+            </p>
+
+            <h2>
+              Education that moves
+              <span class="gradient-text">
+                beyond theory.
+              </span>
+            </h2>
+
+          </div>
+
+
+          <p>
+
+            Technology becomes easier to understand
+            when students actually build, experiment,
+            debug and create.
+
+          </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+
+          <!-- CARD 1 -->
+
+          <article
+            class="why-card reveal reveal-left"
+          >
+
+            <div class="why-icon">
+              ◈
+            </div>
+
+            <h3>
+              Project-Based Learning
+            </h3>
+
+            <p>
+
+              Students learn concepts by building
+              practical projects instead of simply
+              memorising theory.
+
+            </p>
+
+            <span class="card-number">
+              01
+            </span>
+
+          </article>
+
+
+          <!-- CARD 2 -->
+
+          <article
+            class="why-card reveal reveal-up"
+          >
+
+            <div class="why-icon">
+              ⚙
+            </div>
+
+            <h3>
+              Hands-On Technology
+            </h3>
+
+            <p>
+
+              Work with electronics, sensors,
+              microcontrollers, software and
+              real-world technology.
+
+            </p>
+
+            <span class="card-number">
+              02
+            </span>
+
+          </article>
+
+
+          <!-- CARD 3 -->
+
+          <article
+            class="why-card reveal reveal-right"
+          >
+
+            <div class="why-icon">
+              ✦
+            </div>
+
+            <h3>
+              Future Skills
+            </h3>
+
+            <p>
+
+              Develop technical thinking,
+              problem solving, creativity and
+              engineering skills.
+
+            </p>
+
+            <span class="card-number">
+              03
+            </span>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         LEARNING JOURNEY
+         ========================================================= -->
+
+    <section
+      id="journey"
+      class="section"
+    >
+
+      <div class="container">
+
+
+        <div
+          class="section-heading reveal reveal-up"
+        >
+
+          <div>
+
+            <p class="eyebrow">
+              LEARNING JOURNEY
+            </p>
+
+            <h2>
+              Start simple.
+              <span class="gradient-text">
+                Build bigger.
+              </span>
+            </h2>
+
+          </div>
+
+          <p>
+
+            Every technology program follows a
+            structured learning progression.
+
+          </p>
+
+        </div>
+
+
+        <div class="journey">
+
+
+          <!-- STEP 1 -->
+
+          <div
+            class="journey-step reveal reveal-left"
+          >
+
+            <div class="journey-number">
+              01
+            </div>
+
+            <div class="journey-content">
+
+              <span>
+                BEGINNER
+              </span>
+
+              <h3>
+                Understand
+              </h3>
+
+              <p>
+
+                Build a strong foundation by
+                understanding components,
+                concepts and fundamentals.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- STEP 2 -->
+
+          <div
+            class="journey-step reveal reveal-right"
+          >
+
+            <div class="journey-number">
+              02
+            </div>
+
+            <div class="journey-content">
+
+              <span>
+                INTERMEDIATE
+              </span>
+
+              <h3>
+                Build
+              </h3>
+
+              <p>
+
+                Combine concepts and create
+                increasingly complex projects
+                using real hardware and software.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- STEP 3 -->
+
+          <div
+            class="journey-step reveal reveal-left"
+          >
+
+            <div class="journey-number">
+              03
+            </div>
+
+            <div class="journey-content">
+
+              <span>
+                EXPERT
+              </span>
+
+              <h3>
+                Engineer
+              </h3>
+
+              <p>
+
+                Work on advanced systems,
+                architecture, automation and
+                real-world engineering challenges.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- STEP 4 -->
+
+          <div
+            class="journey-step reveal reveal-right"
+          >
+
+            <div class="journey-number">
+              04
+            </div>
+
+            <div class="journey-content">
+
+              <span>
+                PROJECT
+              </span>
+
+              <h3>
+                Create
+              </h3>
+
+              <p>
+
+                Turn your knowledge into
+                practical projects that
+                demonstrate what you can build.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PROJECTS
+         ========================================================= -->
+
+    <section
+      id="projects"
+      class="section section-dark"
+    >
+
+      <div class="container">
+
+
+        <div
+          class="section-heading reveal reveal-up"
+        >
+
+          <div>
+
+            <p class="eyebrow">
+              BUILD SOMETHING REAL
+            </p>
+
+            <h2>
+              From ideas to
+              <span class="gradient-text">
+                working prototypes.
+              </span>
+            </h2>
+
+          </div>
+
+
+          <p>
+
+            Our learning philosophy is simple:
+            understand the technology and then
+            use it to create something.
+
+          </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+          <!-- PROJECT 1 -->
+
+          <article
+            class="project-card project-large reveal reveal-left"
+          >
+
+            <div class="project-number">
+              01
+            </div>
+
+            <div class="project-visual project-robot">
+              🤖
+            </div>
+
+            <div class="project-content">
+
+              <span>
+                ROBOTICS
+              </span>
+
+              <h3>
+                Intelligent Robots
+              </h3>
+
+              <p>
+
+                Explore sensors, motors,
+                controllers, programming and
+                autonomous robot behaviour.
+
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 2 -->
+
+          <article
+            class="project-card reveal reveal-up"
+          >
+
+            <div class="project-number">
+              02
+            </div>
+
+            <div class="project-visual">
+              🌐
+            </div>
+
+            <div class="project-content">
+
+              <span>
+                IoT
+              </span>
+
+              <h3>
+                Connected Devices
+              </h3>
+
+              <p>
+
+                Build devices that sense,
+                communicate and interact with
+                the digital world.
+
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 3 -->
+
+          <article
+            class="project-card reveal reveal-right"
+          >
+
+            <div class="project-number">
+              03
+            </div>
+
+            <div class="project-visual">
+              🧠
+            </div>
+
+            <div class="project-content">
+
+              <span>
+                ARTIFICIAL INTELLIGENCE
+              </span>
+
+              <h3>
+                Intelligent Systems
+              </h3>
+
+              <p>
+
+                Explore how machines can
+                process information and solve
+                intelligent problems.
+
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 4 -->
+
+          <article
+            class="project-card reveal reveal-left"
+          >
+
+            <div class="project-number">
+              04
+            </div>
+
+            <div class="project-visual">
+              ⚡
+            </div>
+
+            <div class="project-content">
+
+              <span>
+                AUTOMATION
+              </span>
+
+              <h3>
+                Smart Automation
+              </h3>
+
+              <p>
+
+                Combine sensors, controllers
+                and automation logic to solve
+                practical problems.
+
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ACCOUNT / STUDENT DASHBOARD CTA
+         ========================================================= -->
+
+    <section class="section account-cta-section">
+
+      <div class="container">
+
+
+        <div
+          class="account-cta reveal reveal-up"
+        >
+
+          <div class="account-cta-glow"></div>
+
+
+          <div class="account-cta-content">
+
+            <p class="eyebrow">
+              YOUR LEARNING JOURNEY
+            </p>
+
+            <h2>
+
+              Keep track of
+              <span class="gradient-text">
+                your progress.
+              </span>
+
+            </h2>
+
+            <p>
+
+              Create a BotNest Academy account
+              to register your child or student
+              and track course progress and
+              attendance from one dashboard.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+              <a
+                href="signup.html"
+                class="btn btn-primary"
+              >
+                Create Account
+                <span>→</span>
+              </a>
+
+              <a
+                href="login.html"
+                class="btn btn-secondary"
+              >
+                Customer Login
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="account-cta-visual">
+
+            <div class="dashboard-preview">
+
+              <div class="preview-top">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+              </div>
+
+
+              <div class="preview-content">
+
+                <div class="preview-line large"></div>
+
+                <div class="preview-line"></div>
+
+                <div class="preview-progress">
+
+                  <span></span>
+
+                </div>
+
+
+                <div class="preview-cards">
+
+                  <div></div>
+                  <div></div>
+                  <div></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FINAL CTA
+         ========================================================= -->
+
+    <section class="final-cta">
+
+      <div class="final-cta-grid"></div>
+
+      <div class="container">
+
+        <div
+          class="final-cta-content reveal reveal-up"
+        >
+
+          <p class="eyebrow">
+            THE FUTURE STARTS WITH BUILDING
+          </p>
+
+          <h2>
+            Ready to
+            <span class="gradient-text">
+              build something?
+            </span>
+          </h2>
+
+          <p>
+
+            Explore our programs and start
+            your technology learning journey
+            with BotNest Academy.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              href="#programs"
+              class="btn btn-primary"
+            >
+              Explore Courses
+              <span>→</span>
+            </a>
+
+
+            <a
+              href="signup.html"
+              class="btn btn-secondary"
+            >
+              Create Account
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+
+  <footer class="site-footer">
+
+    <div class="container">
+
+
+      <div class="footer-grid">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+          <a
+            href="index.html"
+            class="brand"
+          >
+
+            <img
+              src="assets/botnest-logo.jpg"
+              alt="BotNest Academy"
+            >
+
+            <div class="brand-text">
+
+              <strong>
+                BOTNEST
+              </strong>
+
+              <span>
+                ACADEMY
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <p>
+
+            Explore. Engineer. Elevate.
+
+            <br>
+
+            Building the next generation
+            of technology creators.
+
+          </p>
+
+        </div>
+
+
+        <!-- PROGRAMS -->
+
+        <div class="footer-column">
+
+          <h4>
+            Programs
+          </h4>
+
+          <a href="course.html?course=Robotics&level=Beginner">
+            Robotics
+          </a>
+
+          <a href="course.html?course=IoT&level=Beginner">
+            IoT
+          </a>
+
+          <a href="course.html?course=Artificial%20Intelligence&level=Beginner">
+            Artificial Intelligence
+          </a>
+
+          <a href="course.html?course=Machine%20Learning&level=Beginner">
+            Machine Learning
+          </a>
+
+          <a href="course.html?course=Deep%20Learning&level=Beginner">
+            Deep Learning
+          </a>
+
+          <a href="course.html?course=Automation&level=Beginner">
+            Automation
+          </a>
+
+        </div>
+
+
+        <!-- ACCOUNT -->
+
+        <div class="footer-column">
+
+          <h4>
+            Account
+          </h4>
+
+          <a href="signup.html">
+            Create Account
+          </a>
+
+          <a href="login.html">
+            Customer Login
+          </a>
+
+          <a href="customer.html">
+            Student Dashboard
+          </a>
+
+          <a href="admin.html">
+            Admin Portal
+          </a>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="footer-column">
+
+          <h4>
+            Explore
+          </h4>
+
+          <a href="#why">
+            Why BotNest
+          </a>
+
+          <a href="#journey">
+            Learning Journey
+          </a>
+
+          <a href="#projects">
+            Projects
+          </a>
+
+          <a href="#programs">
+            Courses
+          </a>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <p>
+
+          ©
+          <span id="year"></span>
+          BotNest Academy.
+          All rights reserved.
+
+        </p>
+
+
+        <p>
+          Explore · Engineer · Elevate
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+       SCRIPTS
+       ========================================================= -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
