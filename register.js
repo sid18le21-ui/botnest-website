@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-
   const COURSES = [
     "Robotics",
     "IoT",
@@ -26,16 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "Automation"
   ];
 
-
   const LEVELS = [
     "Beginner",
     "Intermediate",
     "Expert"
   ];
 
-
-  const WHATSAPP_NUMBER =
-    "918939129382";
+  const WHATSAPP_NUMBER = "918939129382";
 
 
   /*
@@ -45,93 +41,49 @@ document.addEventListener("DOMContentLoaded", () => {
    */
 
   const loading =
-    document.getElementById(
-      "registerLoading"
-    );
-
+    document.getElementById("registerLoading");
 
   const loginRequired =
-    document.getElementById(
-      "loginRequired"
-    );
-
+    document.getElementById("loginRequired");
 
   const content =
-    document.getElementById(
-      "registrationContent"
-    );
-
+    document.getElementById("registrationContent");
 
   const form =
-    document.getElementById(
-      "registrationForm"
-    );
-
+    document.getElementById("registrationForm");
 
   const errorBox =
-    document.getElementById(
-      "registerError"
-    );
-
+    document.getElementById("registerError");
 
   const successBox =
-    document.getElementById(
-      "registerSuccess"
-    );
-
+    document.getElementById("registerSuccess");
 
   const successMessage =
-    document.getElementById(
-      "successMessage"
-    );
-
+    document.getElementById("successMessage");
 
   const selectedCourse =
-    document.getElementById(
-      "selectedCourse"
-    );
-
+    document.getElementById("selectedCourse");
 
   const selectedLevel =
-    document.getElementById(
-      "selectedLevel"
-    );
-
+    document.getElementById("selectedLevel");
 
   const prerequisiteSection =
-    document.getElementById(
-      "prerequisiteSection"
-    );
-
+    document.getElementById("prerequisiteSection");
 
   const prerequisiteText =
-    document.getElementById(
-      "prerequisiteText"
-    );
-
+    document.getElementById("prerequisiteText");
 
   const registerButton =
-    document.getElementById(
-      "registerButton"
-    );
-
+    document.getElementById("registerButton");
 
   const registerButtonText =
-    document.getElementById(
-      "registerButtonText"
-    );
-
+    document.getElementById("registerButtonText");
 
   const registerButtonLoader =
-    document.getElementById(
-      "registerButtonLoader"
-    );
-
+    document.getElementById("registerButtonLoader");
 
   const logoutButton =
-    document.getElementById(
-      "logoutButton"
-    );
+    document.getElementById("logoutButton");
 
 
   /*
@@ -141,31 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
    */
 
   const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
+    new URLSearchParams(window.location.search);
 
   const requestedCourse =
     params.get("course");
 
-
   const requestedLevel =
     params.get("level");
 
-
   const course =
-    COURSES.includes(
-      requestedCourse
-    )
+    COURSES.includes(requestedCourse)
       ? requestedCourse
       : "Robotics";
 
-
   const level =
-    LEVELS.includes(
-      requestedLevel
-    )
+    LEVELS.includes(requestedLevel)
       ? requestedLevel
       : "Beginner";
 
@@ -176,19 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  let prerequisite =
-    null;
-
+  let prerequisite = null;
 
   if (level === "Intermediate") {
 
-    prerequisite =
-      "Beginner";
+    prerequisite = "Beginner";
 
   } else if (level === "Expert") {
 
-    prerequisite =
-      "Intermediate";
+    prerequisite = "Intermediate";
 
   }
 
@@ -212,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.BotNest &&
       BotNest.getToken();
 
-
     if (!token) {
 
       showLoginRequired();
@@ -233,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "customerGetProfile"
         );
 
-
       setupRegistration(
         profile.account
       );
@@ -241,7 +177,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } catch (error) {
 
-      console.error(error);
+      console.error(
+        "REGISTRATION INITIALIZATION ERROR:",
+        error
+      );
 
       BotNest.clearSession();
 
@@ -258,18 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  function setupRegistration(
-    account
-  ) {
+  function setupRegistration(account) {
 
-    loading.hidden =
-      true;
+    loading.hidden = true;
 
-    loginRequired.hidden =
-      true;
+    loginRequired.hidden = true;
 
-    content.hidden =
-      false;
+    content.hidden = false;
 
 
     /*
@@ -278,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     selectedCourse.textContent =
       course;
-
 
     selectedLevel.textContent =
       `${level} Level`;
@@ -322,12 +255,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "parentName"
       );
 
-
     const phone =
       document.getElementById(
         "phone"
       );
-
 
     const email =
       document.getElementById(
@@ -479,9 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      selected.value !== "Yes"
-    ) {
+    if (selected.value !== "Yes") {
 
       showError(
         `This registration requires completion of the ${prerequisite} level first.`
@@ -498,6 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setSubmitEnabled(true);
 
     return true;
+
   }
 
 
@@ -507,12 +437,9 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  async function submitRegistration(
-    event
-  ) {
+  async function submitRegistration(event) {
 
     event.preventDefault();
-
 
     hideMessages();
 
@@ -522,9 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * sending anything.
      */
 
-    if (
-      !BotNest.getToken()
-    ) {
+    if (!BotNest.getToken()) {
 
       showLoginRequired();
 
@@ -536,9 +461,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * Prerequisite
      */
 
-    if (
-      !validatePrerequisite()
-    ) {
+    if (!validatePrerequisite()) {
 
       return;
     }
@@ -549,87 +472,47 @@ document.addEventListener("DOMContentLoaded", () => {
      */
 
     const studentName =
-      getValue(
-        "studentName"
-      );
-
+      getValue("studentName");
 
     const age =
-      getValue(
-        "age"
-      );
-
+      getValue("age");
 
     const grade =
-      getValue(
-        "grade"
-      );
-
+      getValue("grade");
 
     const school =
-      getValue(
-        "school"
-      );
-
+      getValue("school");
 
     const city =
-      getValue(
-        "city"
-      );
-
+      getValue("city");
 
     const parentName =
-      getValue(
-        "parentName"
-      );
-
+      getValue("parentName");
 
     const relationship =
-      getValue(
-        "relationship"
-      );
-
+      getValue("relationship");
 
     const phone =
-      getValue(
-        "phone"
-      );
-
+      getValue("phone");
 
     const email =
-      getValue(
-        "email"
-      ).toLowerCase();
-
+      getValue("email")
+        .toLowerCase();
 
     const previousExperience =
-      getValue(
-        "previousExperience"
-      );
-
+      getValue("previousExperience");
 
     const goals =
-      getValue(
-        "goals"
-      );
-
+      getValue("goals");
 
     const anythingElse =
-      getValue(
-        "anythingElse"
-      );
-
+      getValue("anythingElse");
 
     const contactDate =
-      getValue(
-        "contactDate"
-      );
-
+      getValue("contactDate");
 
     const contactTime =
-      getValue(
-        "contactTime"
-      );
+      getValue("contactTime");
 
 
     /*
@@ -667,9 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * Selected prerequisite
      */
 
-    let prerequisiteAnswer =
-      "";
-
+    let prerequisiteAnswer = "";
 
     if (prerequisite) {
 
@@ -703,6 +584,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     try {
+
+      /*
+       * Send registration to backend.
+       */
 
       const response =
         await BotNest.api(
@@ -775,37 +660,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } catch (error) {
 
-      console.error(error);
-
-
       /*
-       * If the session expired,
-       * take the customer back to login.
+       * ========================================================
+       * IMPORTANT DEBUGGING CHANGE
+       * ========================================================
+       *
+       * Show the actual backend/API error on the webpage.
+       * This makes it possible to diagnose the problem without
+       * opening browser developer tools.
        */
+
+      console.error(
+        "REGISTRATION ERROR:",
+        error
+      );
+
 
       const message =
         String(
-          error.message || ""
+          error?.message ||
+          error ||
+          "Unknown registration error."
         );
 
 
-      if (
-        message
-          .toLowerCase()
-          .includes("session")
-      ) {
-
-        BotNest.clearSession();
-
-        showLoginRequired();
-
-        return;
-      }
-
-
       showError(
-        message ||
-        "Unable to submit the registration. Please try again."
+        "Registration failed: " +
+        message
       );
 
 
@@ -824,21 +705,18 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  function showSuccess(
-    response
-  ) {
+  function showSuccess(response) {
 
-    form.hidden =
-      true;
+    form.hidden = true;
 
-
-    successBox.hidden =
-      false;
+    successBox.hidden = false;
 
 
     const registrationId =
-      response.registrationId ||
-      "";
+      response &&
+      response.registrationId
+        ? response.registrationId
+        : "";
 
 
     successMessage.textContent =
@@ -893,13 +771,9 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  function validateForm(
-    values
-  ) {
+  function validateForm(values) {
 
-    if (
-      !values.studentName
-    ) {
+    if (!values.studentName) {
 
       return {
         valid: false,
@@ -911,9 +785,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const age =
-      Number(
-        values.age
-      );
+      Number(values.age);
 
 
     if (
@@ -931,9 +803,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.grade
-    ) {
+    if (!values.grade) {
 
       return {
         valid: false,
@@ -944,9 +814,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.school
-    ) {
+    if (!values.school) {
 
       return {
         valid: false,
@@ -957,9 +825,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.city
-    ) {
+    if (!values.city) {
 
       return {
         valid: false,
@@ -970,9 +836,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.parentName
-    ) {
+    if (!values.parentName) {
 
       return {
         valid: false,
@@ -983,9 +847,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.relationship
-    ) {
+    if (!values.relationship) {
 
       return {
         valid: false,
@@ -996,9 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.phone
-    ) {
+    if (!values.phone) {
 
       return {
         valid: false,
@@ -1009,11 +869,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !isValidEmail(
-        values.email
-      )
-    ) {
+    if (!isValidEmail(values.email)) {
 
       return {
         valid: false,
@@ -1024,9 +880,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.goals
-    ) {
+    if (!values.goals) {
 
       return {
         valid: false,
@@ -1037,9 +891,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.contactDate
-    ) {
+    if (!values.contactDate) {
 
       return {
         valid: false,
@@ -1050,9 +902,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !values.contactTime
-    ) {
+    if (!values.contactTime) {
 
       return {
         valid: false,
@@ -1129,14 +979,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLoginRequired() {
 
-    loading.hidden =
-      true;
+    loading.hidden = true;
 
-    content.hidden =
-      true;
+    content.hidden = true;
 
-    loginRequired.hidden =
-      false;
+    loginRequired.hidden = false;
+
 
     loginRequired.scrollIntoView({
       behavior: "smooth",
@@ -1154,8 +1002,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function logout() {
 
-    logoutButton.disabled =
-      true;
+    logoutButton.disabled = true;
 
 
     try {
@@ -1167,6 +1014,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
 
       console.warn(
+        "Logout error:",
         error
       );
 
@@ -1188,14 +1036,10 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  function getValue(
-    id
-  ) {
+  function getValue(id) {
 
     const element =
-      document.getElementById(
-        id
-      );
+      document.getElementById(id);
 
 
     if (!element) {
@@ -1208,9 +1052,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function isValidEmail(
-    email
-  ) {
+  function isValidEmail(email) {
 
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       .test(email);
@@ -1218,9 +1060,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function showError(
-    message
-  ) {
+  function showError(message) {
 
     errorBox.textContent =
       message;
@@ -1253,9 +1093,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function setLoading(
-    loadingState
-  ) {
+  function setLoading(loadingState) {
 
     registerButton.disabled =
       loadingState;
@@ -1271,9 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function setSubmitEnabled(
-    enabled
-  ) {
+  function setSubmitEnabled(enabled) {
 
     registerButton.disabled =
       !enabled;
