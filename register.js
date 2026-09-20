@@ -1,851 +1,713 @@
-/*************************************************
- * BOTNEST ACADEMY
- * COURSE REGISTRATION FRONTEND
- *
- * FINAL VERSION
- *************************************************/
+document.addEventListener("DOMContentLoaded", () => {
+
+  /*
+   * ============================================================
+   * BOTNEST REGISTRATION
+   * ============================================================
+   *
+   * Authentication:
+   * Customer account session
+   *
+   * No Google Sign-In
+   * No Google JWT
+   * No OTP
+   * No CAPTCHA
+   *
+   * ============================================================
+   */
 
 
-/*************************************************
- * BACKEND CONFIGURATION
- *************************************************/
-
-const BACKEND_URL =
-  "https://script.google.com/macros/s/AKfycbxQulaFjq0dKw4HqVn1Zz32VNWmYUwPMiTU6BELDEkRahQpllvbH2jW12ndl--qTkDZ/exec";
-
-
-/*************************************************
- * GOOGLE AUTHENTICATION STATE
- *************************************************/
-
-let googleAuth = {
-
-  signedIn: false,
-
-  idToken: "",
-
-  googleId: "",
-
-  email: "",
-
-  name: "",
-
-  picture: ""
-
-};
+  const COURSES = [
+    "Robotics",
+    "IoT",
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Deep Learning",
+    "Automation"
+  ];
 
 
-/*************************************************
- * PAGE INITIALIZATION
- *************************************************/
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+  const LEVELS = [
+    "Beginner",
+    "Intermediate",
+    "Expert"
+  ];
 
 
-    /*************************************************
-     * HELPER
-     *************************************************/
+  const WHATSAPP_NUMBER =
+    "918939129382";
 
-    function $(id) {
 
-      return document.getElementById(id);
+  /*
+   * ============================================================
+   * ELEMENTS
+   * ============================================================
+   */
 
+  const loading =
+    document.getElementById(
+      "registerLoading"
+    );
+
+
+  const loginRequired =
+    document.getElementById(
+      "loginRequired"
+    );
+
+
+  const content =
+    document.getElementById(
+      "registrationContent"
+    );
+
+
+  const form =
+    document.getElementById(
+      "registrationForm"
+    );
+
+
+  const errorBox =
+    document.getElementById(
+      "registerError"
+    );
+
+
+  const successBox =
+    document.getElementById(
+      "registerSuccess"
+    );
+
+
+  const successMessage =
+    document.getElementById(
+      "successMessage"
+    );
+
+
+  const selectedCourse =
+    document.getElementById(
+      "selectedCourse"
+    );
+
+
+  const selectedLevel =
+    document.getElementById(
+      "selectedLevel"
+    );
+
+
+  const prerequisiteSection =
+    document.getElementById(
+      "prerequisiteSection"
+    );
+
+
+  const prerequisiteText =
+    document.getElementById(
+      "prerequisiteText"
+    );
+
+
+  const registerButton =
+    document.getElementById(
+      "registerButton"
+    );
+
+
+  const registerButtonText =
+    document.getElementById(
+      "registerButtonText"
+    );
+
+
+  const registerButtonLoader =
+    document.getElementById(
+      "registerButtonLoader"
+    );
+
+
+  const logoutButton =
+    document.getElementById(
+      "logoutButton"
+    );
+
+
+  /*
+   * ============================================================
+   * URL PARAMETERS
+   * ============================================================
+   */
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const requestedCourse =
+    params.get("course");
+
+
+  const requestedLevel =
+    params.get("level");
+
+
+  const course =
+    COURSES.includes(
+      requestedCourse
+    )
+      ? requestedCourse
+      : "Robotics";
+
+
+  const level =
+    LEVELS.includes(
+      requestedLevel
+    )
+      ? requestedLevel
+      : "Beginner";
+
+
+  /*
+   * ============================================================
+   * PREREQUISITE
+   * ============================================================
+   */
+
+  let prerequisite =
+    null;
+
+
+  if (level === "Intermediate") {
+
+    prerequisite =
+      "Beginner";
+
+  } else if (level === "Expert") {
+
+    prerequisite =
+      "Intermediate";
+
+  }
+
+
+  /*
+   * ============================================================
+   * START
+   * ============================================================
+   */
+
+  initialize();
+
+
+  async function initialize() {
+
+    /*
+     * No session?
+     */
+
+    const token =
+      window.BotNest &&
+      BotNest.getToken();
+
+
+    if (!token) {
+
+      showLoginRequired();
+
+      return;
     }
 
 
-    /*************************************************
-     * READ COURSE AND LEVEL FROM URL
-     *************************************************/
+    try {
 
-    const params =
-      new URLSearchParams(
-        window.location.search
+      /*
+       * Verify session and retrieve
+       * account details from backend.
+       */
+
+      const profile =
+        await BotNest.api(
+          "customerGetProfile"
+        );
+
+
+      setupRegistration(
+        profile.account
       );
 
 
-    const course =
-      params.get("course") ||
-      "Course";
+    } catch (error) {
+
+      console.error(error);
+
+      BotNest.clearSession();
+
+      showLoginRequired();
+
+    }
+
+  }
 
 
-    const level =
-      params.get("level") ||
-      "Beginner";
+  /*
+   * ============================================================
+   * SETUP REGISTRATION
+   * ============================================================
+   */
+
+  function setupRegistration(
+    account
+  ) {
+
+    loading.hidden =
+      true;
+
+    loginRequired.hidden =
+      true;
+
+    content.hidden =
+      false;
 
 
-    /*************************************************
-     * UPDATE PAGE COURSE INFORMATION
-     *************************************************/
+    /*
+     * Course information
+     */
 
-    if ($("courseTitle")) {
+    selectedCourse.textContent =
+      course;
 
-      $("courseTitle").textContent =
-        course;
+
+    selectedLevel.textContent =
+      `${level} Level`;
+
+
+    /*
+     * Account information
+     */
+
+    const accountFullName =
+      [
+        account.firstName,
+        account.lastName
+      ]
+        .filter(Boolean)
+        .join(" ");
+
+
+    document.getElementById(
+      "signedAccountName"
+    ).textContent =
+      accountFullName ||
+      "Customer";
+
+
+    document.getElementById(
+      "signedAccountEmail"
+    ).textContent =
+      account.email ||
+      "";
+
+
+    /*
+     * Prefill parent / guardian details.
+     *
+     * These values remain editable.
+     */
+
+    const parentName =
+      document.getElementById(
+        "parentName"
+      );
+
+
+    const phone =
+      document.getElementById(
+        "phone"
+      );
+
+
+    const email =
+      document.getElementById(
+        "email"
+      );
+
+
+    if (accountFullName) {
+
+      parentName.value =
+        accountFullName;
 
     }
 
 
-    if ($("courseName")) {
+    if (account.phone) {
 
-      $("courseName").textContent =
-        course;
-
-    }
-
-
-    if ($("levelName")) {
-
-      $("levelName").textContent =
-        level;
+      phone.value =
+        account.phone;
 
     }
 
 
-    /*************************************************
-     * BACK TO COURSE LINK
-     *************************************************/
+    if (account.email) {
 
-    if ($("backToCourse")) {
-
-      $("backToCourse").href =
-        "course.html?course=" +
-        encodeURIComponent(course) +
-        "&level=" +
-        encodeURIComponent(level);
+      email.value =
+        account.email;
 
     }
 
 
-    /*************************************************
-     * PREREQUISITE LOGIC
-     *************************************************/
+    /*
+     * Set minimum contact date
+     */
 
-    let prerequisiteLevel =
-      null;
+    setMinimumContactDate();
+
+
+    /*
+     * Configure prerequisite
+     */
+
+    setupPrerequisite();
+
+
+    /*
+     * Form submit
+     */
+
+    form.addEventListener(
+      "submit",
+      submitRegistration
+    );
+
+
+    /*
+     * Prerequisite radio change
+     */
+
+    document
+      .querySelectorAll(
+        'input[name="prerequisite"]'
+      )
+      .forEach(
+        radio => {
+
+          radio.addEventListener(
+            "change",
+            validatePrerequisite
+          );
+
+        }
+      );
+
+
+    /*
+     * Logout
+     */
+
+    logoutButton.addEventListener(
+      "click",
+      logout
+    );
+
+  }
+
+
+  /*
+   * ============================================================
+   * PREREQUISITE SETUP
+   * ============================================================
+   */
+
+  function setupPrerequisite() {
+
+    if (!prerequisite) {
+
+      prerequisiteSection.hidden =
+        true;
+
+      return;
+    }
+
+
+    prerequisiteSection.hidden =
+      false;
+
+
+    prerequisiteText.textContent =
+      `${prerequisite} Level`;
+
+
+    /*
+     * User must explicitly select Yes.
+     */
+
+    setSubmitEnabled(false);
+
+  }
+
+
+  /*
+   * ============================================================
+   * PREREQUISITE VALIDATION
+   * ============================================================
+   */
+
+  function validatePrerequisite() {
+
+    if (!prerequisite) {
+
+      setSubmitEnabled(true);
+
+      return true;
+    }
+
+
+    const selected =
+      document.querySelector(
+        'input[name="prerequisite"]:checked'
+      );
+
+
+    if (!selected) {
+
+      setSubmitEnabled(false);
+
+      return false;
+    }
 
 
     if (
-      level ===
-      "Intermediate"
+      selected.value !== "Yes"
     ) {
 
-      prerequisiteLevel =
-        "Beginner";
+      showError(
+        `This registration requires completion of the ${prerequisite} level first.`
+      );
 
+      setSubmitEnabled(false);
+
+      return false;
     }
 
+
+    hideMessages();
+
+    setSubmitEnabled(true);
+
+    return true;
+  }
+
+
+  /*
+   * ============================================================
+   * SUBMIT
+   * ============================================================
+   */
+
+  async function submitRegistration(
+    event
+  ) {
+
+    event.preventDefault();
+
+
+    hideMessages();
+
+
+    /*
+     * Re-check authentication before
+     * sending anything.
+     */
 
     if (
-      level ===
-      "Expert"
+      !BotNest.getToken()
     ) {
 
-      prerequisiteLevel =
-        "Intermediate";
+      showLoginRequired();
 
+      return;
     }
 
 
-    const prerequisiteArea =
-      $("prerequisiteArea");
+    /*
+     * Prerequisite
+     */
+
+    if (
+      !validatePrerequisite()
+    ) {
+
+      return;
+    }
 
 
-    const submitBtn =
-      $("submitBtn");
+    /*
+     * Form values
+     */
+
+    const studentName =
+      getValue(
+        "studentName"
+      );
 
 
-    function updatePrerequisite() {
+    const age =
+      getValue(
+        "age"
+      );
+
+
+    const grade =
+      getValue(
+        "grade"
+      );
+
+
+    const school =
+      getValue(
+        "school"
+      );
+
+
+    const city =
+      getValue(
+        "city"
+      );
+
+
+    const parentName =
+      getValue(
+        "parentName"
+      );
+
+
+    const relationship =
+      getValue(
+        "relationship"
+      );
+
+
+    const phone =
+      getValue(
+        "phone"
+      );
+
+
+    const email =
+      getValue(
+        "email"
+      ).toLowerCase();
+
+
+    const previousExperience =
+      getValue(
+        "previousExperience"
+      );
+
+
+    const goals =
+      getValue(
+        "goals"
+      );
+
+
+    const anythingElse =
+      getValue(
+        "anythingElse"
+      );
+
+
+    const contactDate =
+      getValue(
+        "contactDate"
+      );
+
+
+    const contactTime =
+      getValue(
+        "contactTime"
+      );
+
+
+    /*
+     * Client validation
+     */
+
+    const validation =
+      validateForm({
+        studentName,
+        age,
+        grade,
+        school,
+        city,
+        parentName,
+        relationship,
+        phone,
+        email,
+        goals,
+        contactDate,
+        contactTime
+      });
+
+
+    if (!validation.valid) {
+
+      showError(
+        validation.message
+      );
+
+      return;
+    }
+
+
+    /*
+     * Selected prerequisite
+     */
+
+    let prerequisiteAnswer =
+      "";
+
+
+    if (prerequisite) {
 
       const selected =
         document.querySelector(
           'input[name="prerequisite"]:checked'
-        )?.value || "";
-
-
-      if (
-        selected ===
-        "No"
-      ) {
-
-        if ($("prereqWarning")) {
-
-          $("prereqWarning")
-            .classList
-            .add("show");
-
-        }
-
-
-        if ($("blockedNote")) {
-
-          $("blockedNote")
-            .classList
-            .add("show");
-
-        }
-
-
-        submitBtn.disabled =
-          true;
-
-      } else {
-
-        if ($("prereqWarning")) {
-
-          $("prereqWarning")
-            .classList
-            .remove("show");
-
-        }
-
-
-        if ($("blockedNote")) {
-
-          $("blockedNote")
-            .classList
-            .remove("show");
-
-        }
-
-
-        /*
-         * Beginner:
-         * no prerequisite.
-         *
-         * Intermediate / Expert:
-         * must select Yes.
-         */
-
-        if (
-          prerequisiteLevel
-        ) {
-
-          submitBtn.disabled =
-            selected !== "Yes";
-
-        } else {
-
-          submitBtn.disabled =
-            false;
-
-        }
-
-      }
-
-
-      if ($("experienceIntro")) {
-
-        $("experienceIntro")
-          .textContent =
-
-          selected === "Yes"
-
-            ? "Great. Tell us about the student's previous " +
-              prerequisiteLevel +
-              "-level " +
-              course +
-              " learning and projects."
-
-            : "Share the student's previous learning experience.";
-
-      }
-
-    }
-
-
-    if (
-      prerequisiteLevel
-    ) {
-
-      if (
-        prerequisiteArea
-      ) {
-
-        prerequisiteArea.style.display =
-          "block";
-
-      }
-
-
-      if ($("prereqQuestion")) {
-
-        $("prereqQuestion")
-          .innerHTML =
-
-          "Have you already completed a " +
-          prerequisiteLevel +
-          "-level " +
-          escapeHtml(course) +
-          " course on any platform? " +
-          '<span class="required">*</span>';
-
-      }
-
-
-      if ($("prereqWarningText")) {
-
-        $("prereqWarningText")
-          .textContent =
-
-          "We recommend completing the " +
-          prerequisiteLevel +
-          "-level " +
-          course +
-          " course before enrolling in the " +
-          level +
-          " level. The " +
-          level +
-          " curriculum builds on the concepts and practical skills covered in the " +
-          prerequisiteLevel +
-          " level. Starting directly at " +
-          level +
-          " may make it harder to follow the curriculum and keep pace with the class.";
-
-      }
-
-
-      if ($("prereqCourseLink")) {
-
-        $("prereqCourseLink").href =
-
-          "course.html?course=" +
-          encodeURIComponent(course) +
-          "&level=" +
-          encodeURIComponent(
-            prerequisiteLevel
-          );
-
-      }
-
-
-      document
-        .querySelectorAll(
-          'input[name="prerequisite"]'
-        )
-        .forEach(
-          function (radio) {
-
-            radio.addEventListener(
-              "change",
-              updatePrerequisite
-            );
-
-          }
         );
 
 
-      submitBtn.disabled =
-        true;
+      if (!selected) {
 
+        showError(
+          "Please answer the course prerequisite question."
+        );
 
-      updatePrerequisite();
-
-    } else {
-
-      /*
-       * Beginner has no prerequisite.
-       */
-
-      if (
-        prerequisiteArea
-      ) {
-
-        prerequisiteArea.style.display =
-          "none";
-
+        return;
       }
 
 
-      submitBtn.disabled =
-        false;
+      prerequisiteAnswer =
+        selected.value;
 
     }
 
-
-    /*************************************************
-     * MINIMUM CONTACT DATE
-     *************************************************/
-
-    const now =
-      new Date();
-
-
-    if ($("contactDate")) {
-
-      $("contactDate").min =
-
-        now.getFullYear() +
-        "-" +
-        String(
-          now.getMonth() + 1
-        ).padStart(2, "0") +
-        "-" +
-        String(
-          now.getDate()
-        ).padStart(2, "0");
-
-    }
-
-
-    /*************************************************
-     * GOOGLE SIGN-IN
-     *************************************************/
 
     /*
-     * Google Identity Services calls:
-     *
-     * window.handleGoogleCredential()
-     *
-     * after successful sign-in.
+     * Disable button
      */
 
+    setLoading(true);
 
-    window.handleGoogleCredential =
-      function (response) {
 
-        try {
+    try {
 
-
-          if (
-            !response ||
-            !response.credential
-          ) {
-
-            throw new Error(
-              "Google did not return an authentication credential."
-            );
-
-          }
-
-
-          const idToken =
-            response.credential;
-
-
-          /*******************************************
-           * DECODE JWT PAYLOAD
-           *******************************************/
-
-          const parts =
-            idToken.split(".");
-
-
-          if (
-            parts.length !== 3
-          ) {
-
-            throw new Error(
-              "Invalid Google credential."
-            );
-
-          }
-
-
-          const base64Url =
-            parts[1];
-
-
-          const base64 =
-            base64Url
-              .replace(
-                /-/g,
-                "+"
-              )
-              .replace(
-                /_/g,
-                "/"
-              );
-
-
-          const jsonPayload =
-            decodeURIComponent(
-
-              atob(base64)
-                .split("")
-                .map(
-                  function (char) {
-
-                    return (
-                      "%" +
-                      (
-                        "00" +
-                        char
-                          .charCodeAt(0)
-                          .toString(16)
-                      ).slice(-2)
-                    );
-
-                  }
-                )
-                .join("")
-
-            );
-
-
-          const payload =
-            JSON.parse(
-              jsonPayload
-            );
-
-
-          /*******************************************
-           * STORE GOOGLE AUTH DATA
-           *******************************************/
-
-          googleAuth = {
-
-            signedIn:
-              true,
-
-            idToken:
-              idToken,
-
-            googleId:
-              payload.sub ||
-              "",
-
-            email:
-              (
-                payload.email ||
-                ""
-              )
-                .trim()
-                .toLowerCase(),
-
-            name:
-              payload.name ||
-              "",
-
-            picture:
-              payload.picture ||
-              ""
-
-          };
-
-
-          /*******************************************
-           * VERIFY BASIC GOOGLE DATA
-           *******************************************/
-
-          if (
-            !googleAuth.email ||
-            !googleAuth.googleId
-          ) {
-
-            throw new Error(
-              "Google account information is incomplete."
-            );
-
-          }
-
-
-          /*******************************************
-           * PRE-FILL EMAIL
-           *******************************************/
-
-          const emailField =
-            $("email");
-
-
-          if (emailField) {
-
-            emailField.value =
-              googleAuth.email;
-
-            /*
-             * Prevent the customer from changing
-             * the email to a different account.
-             */
-
-            emailField.readOnly =
-              true;
-
-          }
-
-
-          /*******************************************
-           * DISPLAY GOOGLE USER
-           *******************************************/
-
-          if ($("googleUserName")) {
-
-            $("googleUserName")
-              .textContent =
-              googleAuth.name ||
-              "Google Account";
-
-          }
-
-
-          if ($("googleUserEmail")) {
-
-            $("googleUserEmail")
-              .textContent =
-              googleAuth.email;
-
-          }
-
-
-          if (
-            $("googleUserPicture")
-          ) {
-
-            if (
-              googleAuth.picture
-            ) {
-
-              $("googleUserPicture")
-                .src =
-                googleAuth.picture;
-
-            }
-
-          }
-
-
-          if ($("googleUser")) {
-
-            $("googleUser")
-              .classList
-              .add("show");
-
-          }
-
-
-          if ($("googleStatus")) {
-
-            $("googleStatus")
-              .textContent =
-              "Google account verified. You can now submit your registration.";
-
-          }
-
-
-          /*******************************************
-           * GOOGLE SIGN-IN BUTTON
-           *******************************************/
-
-          if (
-            $("googleSignInBtn")
-          ) {
-
-            $("googleSignInBtn")
-              .style.display =
-              "none";
-
-          }
-
-
-        } catch (error) {
-
-          console.error(
-            "Google authentication error:",
-            error
-          );
-
-
-          googleAuth = {
-
-            signedIn:
-              false,
-
-            idToken:
-              "",
-
-            googleId:
-              "",
-
-            email:
-              "",
-
-            name:
-              "",
-
-            picture:
-              ""
-
-          };
-
-
-          if ($("googleStatus")) {
-
-            $("googleStatus")
-              .textContent =
-              "Google sign-in failed. Please try again.";
-
-          }
-
-
-          showError(
-            "Google sign-in could not be verified. Please sign in with Google again."
-          );
-
-        }
-
-      };
-
-
-    /*************************************************
-     * FORM SUBMISSION
-     *************************************************/
-
-    $("registrationForm")
-      .addEventListener(
-        "submit",
-        async function (event) {
-
-          event.preventDefault();
-
-
-          /*******************************************
-           * CLEAR PREVIOUS ERROR
-           *******************************************/
-
-          if ($("errorBox")) {
-
-            $("errorBox")
-              .classList
-              .remove("show");
-
-          }
-
-
-          /*******************************************
-           * GOOGLE AUTHENTICATION CHECK
-           *******************************************/
-
-          if (
-            !googleAuth ||
-            !googleAuth.signedIn ||
-            !googleAuth.idToken
-          ) {
-
-            showError(
-              "Please sign in with Google before submitting your registration."
-            );
-
-            return;
-
-          }
-
-
-          /*******************************************
-           * PREREQUISITE VALIDATION
-           *******************************************/
-
-          if (
-            level !==
-            "Beginner"
-          ) {
-
-            const selected =
-              document.querySelector(
-                'input[name="prerequisite"]:checked'
-              )?.value;
-
-
-            if (!selected) {
-
-              showError(
-                "Please answer the prerequisite question."
-              );
-
-              return;
-
-            }
-
-
-            if (
-              selected ===
-              "No"
-            ) {
-
-              showError(
-
-                "Please complete the recommended " +
-                prerequisiteLevel +
-                "-level " +
-                course +
-                " course before registering for " +
-                level +
-                "."
-
-              );
-
-
-              updatePrerequisite();
-
-              return;
-
-            }
-
-          }
-
-
-          /*******************************************
-           * HTML FORM VALIDATION
-           *******************************************/
-
-          if (
-            !$("registrationForm")
-              .checkValidity()
-          ) {
-
-            $("registrationForm")
-              .reportValidity();
-
-            return;
-
-          }
-
-
-          /*******************************************
-           * COLLECT FORM DATA
-           *******************************************/
-
-          const formData =
-            Object.fromEntries(
-
-              new FormData(
-                $("registrationForm")
-              ).entries()
-
-            );
-
-
-          /*******************************************
-           * FINAL EMAIL CHECK
-           *******************************************/
-
-          if (
-            String(
-              formData.email ||
-              ""
-            )
-              .trim()
-              .toLowerCase() !==
-            googleAuth.email
-          ) {
-
-            showError(
-              "The registration email must match your Google account."
-            );
-
-            return;
-
-          }
-
-          console.log("GOOGLE AUTH BEFORE SUBMISSION:", googleAuth);
-console.log("GOOGLE TOKEN EXISTS:", !!googleAuth.idToken);
-console.log("GOOGLE EMAIL:", googleAuth.email);
-
-          /*******************************************
-           * CREATE REGISTRATION DATA
-           *******************************************/
-
-          const registrationData = {
+      const response =
+        await BotNest.api(
+          "submitRegistration",
+          {
 
             course:
               course,
@@ -854,401 +716,568 @@ console.log("GOOGLE EMAIL:", googleAuth.email);
               level,
 
             studentName:
-              formData.studentName ||
-              "",
+              studentName,
 
             age:
-              formData.age ||
-              "",
+              age,
 
             grade:
-              formData.grade ||
-              "",
+              grade,
 
             school:
-              formData.school ||
-              "",
+              school,
 
             city:
-              formData.city ||
-              "",
+              city,
 
             parentName:
-              formData.parentName ||
-              "",
+              parentName,
 
             relationship:
-              formData.relationship ||
-              "",
+              relationship,
 
             phone:
-              formData.phone ||
-              "",
+              phone,
 
             email:
-              formData.email ||
-              "",
+              email,
 
             prerequisite:
-              formData.prerequisite ||
-              "",
+              prerequisiteAnswer,
 
             previousExperience:
-              formData.previousExperience ||
-              "",
+              previousExperience,
 
             goals:
-              formData.goals ||
-              "",
+              goals,
 
             anythingElse:
-              formData.anythingElse ||
-              "",
+              anythingElse,
 
             contactDate:
-              formData.contactDate ||
-              "",
+              contactDate,
 
             contactTime:
-              formData.contactTime ||
-              "",
-
-            submittedAt:
-              new Date()
-                .toISOString(),
-
-            website:
-              "",
-
-
-            /*****************************************
-             * GOOGLE ACCOUNT DATA
-             *****************************************/
-
-            googleIdToken:
-              googleAuth.idToken,
-
-            googleId:
-              googleAuth.googleId,
-
-            googleEmail:
-              googleAuth.email,
-
-            googleName:
-              googleAuth.name
-
-          };
-
-
-          /*******************************************
-           * BUTTON LOADING STATE
-           *******************************************/
-
-          const originalButtonText =
-            submitBtn.textContent;
-
-
-          submitBtn.disabled =
-            true;
-
-
-          submitBtn.textContent =
-            "Submitting registration…";
-
-
-          /*******************************************
-           * SEND TO GOOGLE APPS SCRIPT
-           *******************************************/
-
-          try {
-
-
-            await fetch(
-
-              BACKEND_URL,
-
-              {
-
-                method:
-                  "POST",
-
-                mode:
-                  "no-cors",
-
-                headers: {
-
-                  "Content-Type":
-                    "text/plain;charset=utf-8"
-
-                },
-
-                body:
-                  JSON.stringify(
-                    registrationData
-                  )
-
-              }
-
-            );
-
-
-            /*****************************************
-             * SHOW SUCCESS
-             *****************************************/
-
-            showSuccess(
-              registrationData
-            );
-
-
-          } catch (error) {
-
-            console.error(
-              "Registration error:",
-              error
-            );
-
-
-            showError(
-
-              "We couldn't submit your registration right now. Please try again or contact BotNest Academy on WhatsApp."
-
-            );
-
-
-            submitBtn.disabled =
-              false;
-
-
-            submitBtn.textContent =
-              originalButtonText;
+              contactTime
 
           }
+        );
 
-        }
+
+      /*
+       * Registration saved.
+       */
+
+      showSuccess(
+        response
       );
 
 
-    /*************************************************
-     * SUCCESS SCREEN
-     *************************************************/
+    } catch (error) {
 
-    function showSuccess(
-      data
-    ) {
-
-      $("registrationForm")
-        .style
-        .display =
-        "none";
+      console.error(error);
 
 
-      $("successCard")
-        .classList
-        .add("show");
-
-
-      if ($("successCourse")) {
-
-        $("successCourse")
-          .textContent =
-          data.course;
-
-      }
-
-
-      if ($("successLevel")) {
-
-        $("successLevel")
-          .textContent =
-          data.level +
-          " Level";
-
-      }
-
-
-      let dateText =
-        data.contactDate;
-
-
-      try {
-
-        dateText =
-          new Date(
-            data.contactDate +
-            "T00:00:00"
-          )
-            .toLocaleDateString(
-              "en-IN",
-              {
-
-                day:
-                  "numeric",
-
-                month:
-                  "short",
-
-                year:
-                  "numeric"
-
-              }
-            );
-
-      } catch (error) {
-
-        console.error(
-          "Date formatting error:",
-          error
-        );
-
-      }
-
-
-      if ($("successContact")) {
-
-        $("successContact")
-          .textContent =
-
-          dateText +
-          " • " +
-          data.contactTime;
-
-      }
-
-
-      /*******************************************
-       * WHATSAPP
-       *******************************************/
-
-      const whatsappNumber =
-        "918939129382";
-
+      /*
+       * If the session expired,
+       * take the customer back to login.
+       */
 
       const message =
-
-        "Hi BotNest Academy, I have completed my registration for " +
-        data.course +
-        " — " +
-        data.level +
-        ". I would like to confirm the next steps.";
+        String(
+          error.message || ""
+        );
 
 
       if (
-        $("successWhatsApp")
+        message
+          .toLowerCase()
+          .includes("session")
       ) {
 
-        $("successWhatsApp")
-          .href =
+        BotNest.clearSession();
 
-          "https://wa.me/" +
-          whatsappNumber +
-          "?text=" +
-          encodeURIComponent(
-            message
-          );
-
-      }
-
-
-      /*******************************************
-       * SCROLL TO TOP
-       *******************************************/
-
-      window.scrollTo({
-
-        top:
-          0,
-
-        behavior:
-          "smooth"
-
-      });
-
-    }
-
-
-    /*************************************************
-     * ERROR MESSAGE
-     *************************************************/
-
-    function showError(
-      message
-    ) {
-
-      if (!$("errorBox")) {
-
-        alert(message);
+        showLoginRequired();
 
         return;
-
       }
 
 
-      $("errorBox")
-        .textContent =
-        message;
-
-
-      $("errorBox")
-        .classList
-        .add("show");
-
-
-      $("errorBox")
-        .scrollIntoView({
-
-          behavior:
-            "smooth",
-
-          block:
-            "center"
-
-        });
-
-    }
-
-
-    /*************************************************
-     * HTML ESCAPE
-     *************************************************/
-
-    function escapeHtml(
-      value
-    ) {
-
-      return String(
-        value
-      ).replace(
-
-        /[&<>"']/g,
-
-        function (char) {
-
-          return {
-
-            "&":
-              "&amp;",
-
-            "<":
-              "&lt;",
-
-            ">":
-              "&gt;",
-
-            '"':
-              "&quot;",
-
-            "'":
-              "&#039;"
-
-          }[char];
-
-        }
-
+      showError(
+        message ||
+        "Unable to submit the registration. Please try again."
       );
 
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  }
+
+
+  /*
+   * ============================================================
+   * SUCCESS
+   * ============================================================
+   */
+
+  function showSuccess(
+    response
+  ) {
+
+    form.hidden =
+      true;
+
+
+    successBox.hidden =
+      false;
+
+
+    const registrationId =
+      response.registrationId ||
+      "";
+
+
+    successMessage.textContent =
+      registrationId
+        ? `Registration ID: ${registrationId}. Our team will contact you using your preferred contact details.`
+        : "Our team will contact you using your preferred contact details.";
+
+
+    /*
+     * WhatsApp
+     */
+
+    const whatsappMessage =
+      encodeURIComponent(
+        [
+          "Hello BotNest Academy,",
+          "",
+          "I have submitted a course registration.",
+          "",
+          `Course: ${course}`,
+          `Level: ${level}`,
+          registrationId
+            ? `Registration ID: ${registrationId}`
+            : ""
+        ]
+          .filter(Boolean)
+          .join("\n")
+      );
+
+
+    const whatsappLink =
+      document.getElementById(
+        "whatsappLink"
+      );
+
+
+    whatsappLink.href =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+
+
+    successBox.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+
+
+  /*
+   * ============================================================
+   * FORM VALIDATION
+   * ============================================================
+   */
+
+  function validateForm(
+    values
+  ) {
+
+    if (
+      !values.studentName
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter the student's full name."
+      };
+
     }
 
 
+    const age =
+      Number(
+        values.age
+      );
+
+
+    if (
+      !Number.isInteger(age) ||
+      age < 5 ||
+      age > 60
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter a valid student age."
+      };
+
+    }
+
+
+    if (
+      !values.grade
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter the student's grade or class."
+      };
+
+    }
+
+
+    if (
+      !values.school
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter the school or college name."
+      };
+
+    }
+
+
+    if (
+      !values.city
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter the city."
+      };
+
+    }
+
+
+    if (
+      !values.parentName
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter the parent or guardian name."
+      };
+
+    }
+
+
+    if (
+      !values.relationship
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please select the relationship with the student."
+      };
+
+    }
+
+
+    if (
+      !values.phone
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter a contact phone number."
+      };
+
+    }
+
+
+    if (
+      !isValidEmail(
+        values.email
+      )
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please enter a valid contact email address."
+      };
+
+    }
+
+
+    if (
+      !values.goals
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please tell us what the student would like to learn."
+      };
+
+    }
+
+
+    if (
+      !values.contactDate
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please select a preferred contact date."
+      };
+
+    }
+
+
+    if (
+      !values.contactTime
+    ) {
+
+      return {
+        valid: false,
+        message:
+          "Please select a preferred contact time."
+      };
+
+    }
+
+
+    return {
+      valid: true
+    };
+
   }
-);
+
+
+  /*
+   * ============================================================
+   * DATE
+   * ============================================================
+   */
+
+  function setMinimumContactDate() {
+
+    const input =
+      document.getElementById(
+        "contactDate"
+      );
+
+
+    if (!input) {
+      return;
+    }
+
+
+    const today =
+      new Date();
+
+
+    const year =
+      today.getFullYear();
+
+
+    const month =
+      String(
+        today.getMonth() + 1
+      ).padStart(
+        2,
+        "0"
+      );
+
+
+    const day =
+      String(
+        today.getDate()
+      ).padStart(
+        2,
+        "0"
+      );
+
+
+    input.min =
+      `${year}-${month}-${day}`;
+
+  }
+
+
+  /*
+   * ============================================================
+   * LOGIN REQUIRED
+   * ============================================================
+   */
+
+  function showLoginRequired() {
+
+    loading.hidden =
+      true;
+
+    content.hidden =
+      true;
+
+    loginRequired.hidden =
+      false;
+
+    loginRequired.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+
+
+  /*
+   * ============================================================
+   * LOGOUT
+   * ============================================================
+   */
+
+  async function logout() {
+
+    logoutButton.disabled =
+      true;
+
+
+    try {
+
+      await BotNest.api(
+        "customerLogout"
+      );
+
+    } catch (error) {
+
+      console.warn(
+        error
+      );
+
+    } finally {
+
+      BotNest.clearSession();
+
+      window.location.href =
+        "login.html";
+
+    }
+
+  }
+
+
+  /*
+   * ============================================================
+   * UI HELPERS
+   * ============================================================
+   */
+
+  function getValue(
+    id
+  ) {
+
+    const element =
+      document.getElementById(
+        id
+      );
+
+
+    if (!element) {
+      return "";
+    }
+
+
+    return element.value.trim();
+
+  }
+
+
+  function isValidEmail(
+    email
+  ) {
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      .test(email);
+
+  }
+
+
+  function showError(
+    message
+  ) {
+
+    errorBox.textContent =
+      message;
+
+
+    errorBox.hidden =
+      false;
+
+
+    successBox.hidden =
+      true;
+
+
+    errorBox.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+
+
+  function hideMessages() {
+
+    errorBox.hidden =
+      true;
+
+    successBox.hidden =
+      true;
+
+  }
+
+
+  function setLoading(
+    loadingState
+  ) {
+
+    registerButton.disabled =
+      loadingState;
+
+
+    registerButtonText.hidden =
+      loadingState;
+
+
+    registerButtonLoader.hidden =
+      !loadingState;
+
+  }
+
+
+  function setSubmitEnabled(
+    enabled
+  ) {
+
+    registerButton.disabled =
+      !enabled;
+
+  }
+
+});
