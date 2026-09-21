@@ -186,3 +186,99 @@ a{color:inherit;text-decoration:none}.site-header{position:sticky;top:0;z-index:
   .competition-week-card{grid-template-columns:1fr}
   .competition-week-card>span{display:none}
 }
+
+
+/* =========================================================
+   FINAL STABILITY PATCH
+   Prevent hero content from ever being clipped and keep
+   dynamically-rendered curriculum content visible.
+   ========================================================= */
+.hero-grid{
+  width:min(1180px, calc(100% - 96px));
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:12px;
+  padding-right:12px;
+  grid-template-columns:minmax(0, .96fr) minmax(460px, 1.04fr);
+  gap:54px;
+}
+.hero-copy{
+  position:relative;
+  z-index:5;
+  min-width:0;
+  max-width:650px;
+  transform:none;
+}
+.hero-copy.reveal-left{
+  transform:translate3d(-10px,20px,0);
+}
+.hero-copy.reveal-left.reveal-visible{
+  transform:translate3d(0,0,0);
+}
+.scrolling-up .hero-copy.reveal-left:not(.reveal-visible){
+  transform:translate3d(-10px,-10px,0);
+}
+.hero-copy h1{
+  font-size:clamp(52px,5.25vw,76px);
+  line-height:.98;
+  max-width:650px;
+  margin-left:0;
+  margin-right:0;
+}
+.hero-lead{max-width:560px}
+.hero-bottom.container{
+  width:min(1180px, calc(100% - 96px));
+}
+
+/* Curriculum must remain visible after dynamic JS rendering. */
+.level-detail-grid,
+.curriculum-card,
+.curriculum-list,
+.curriculum-item,
+.competition-week-card,
+.course-structure-note{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+.curriculum-list{
+  display:grid !important;
+}
+.curriculum-item{
+  color:#b7c3d5 !important;
+}
+.curriculum-number{color:var(--cyan) !important}
+.curriculum-title{color:#d4deec !important}
+.curriculum-check{color:#6d7d96 !important}
+
+@media(max-width:1050px){
+  .hero-grid{
+    width:min(900px, calc(100% - 60px));
+    padding-left:0;
+    padding-right:0;
+    grid-template-columns:1fr;
+  }
+  .hero-copy{
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+  .hero-copy h1{max-width:760px;margin-left:auto;margin-right:auto}
+  .hero-copy.reveal-left,
+  .hero-copy.reveal-left.reveal-visible,
+  .scrolling-up .hero-copy.reveal-left:not(.reveal-visible){transform:translate3d(0,0,0)}
+  .hero-bottom.container{width:min(900px, calc(100% - 60px))}
+}
+
+@media(max-width:780px){
+  .hero-grid{width:calc(100% - 30px);gap:25px}
+  .hero-copy{width:100%;text-align:center}
+  .hero-copy h1{font-size:clamp(43px,11.5vw,62px);max-width:100%}
+  .hero-bottom.container{width:calc(100% - 30px)}
+}
+
+@media(max-width:480px){
+  .hero-grid{width:calc(100% - 24px)}
+  .hero-copy h1{font-size:43px}
+  .hero-bottom.container{width:calc(100% - 24px)}
+}
