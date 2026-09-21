@@ -14,3 +14,175 @@ a{color:inherit;text-decoration:none}.site-header{position:sticky;top:0;z-index:
 /* Course renderer compatibility */
 .course-render-shell .course-icon-large{font-size:52px;margin:18px 0}.course-render-shell h1{margin:10px 0 20px}.course-hero-description{max-width:700px;color:var(--muted);font-size:16px;line-height:1.8}.course-hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.course-hero-tags span{font-size:10px;color:#aebbd0;border:1px solid var(--line);padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.025)}.course-overview-main{max-width:760px}.course-overview-main h2{font-size:clamp(40px,5vw,65px);letter-spacing:-.05em;margin:15px 0}.course-overview-main>p:last-child{color:var(--muted);font-size:15px;line-height:1.85}.course-overview-wrap{display:grid;grid-template-columns:1fr .75fr;gap:80px;align-items:start}.course-outcomes{padding:28px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.025)}.course-outcomes ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}.course-outcomes li{display:flex;gap:10px;color:#b9c5d7;font-size:12px}.course-outcomes li span{color:var(--cyan);font-weight:800}.gradient-text{background:linear-gradient(100deg,var(--cyan),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}.level-card{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);cursor:pointer;color:#aab6c8;text-align:left}.level-card.active{border-color:rgba(84,231,255,.4);background:rgba(84,231,255,.06);color:#fff}.level-card h3{font-size:24px}.level-card p{margin:7px 0 0;font-size:12px}.curriculum-card{margin-top:20px;padding:28px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.025)}.curriculum-heading{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:20px}.curriculum-heading h3{font-size:28px;margin-top:10px}.curriculum-heading>span{font-size:10px;color:#718097;text-transform:uppercase;letter-spacing:.12em}.curriculum-list{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.curriculum-item{display:grid;grid-template-columns:34px 1fr 20px;gap:10px;align-items:center;padding:13px;border:1px solid rgba(255,255,255,.055);border-radius:11px}.curriculum-number{color:var(--cyan);font:700 10px 'Space Grotesk'}.curriculum-title{font-size:12px;color:#b7c3d5}.curriculum-check{color:#5e6b80}.level-details-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}.level-action-card{padding:28px;border:1px solid rgba(84,231,255,.18);border-radius:22px;background:linear-gradient(145deg,rgba(84,231,255,.07),rgba(155,124,255,.04))}.level-action-icon{font-size:35px}.level-action-card h3{font-size:28px;margin:12px 0}.level-action-card>p:not(.eyebrow){color:var(--muted);font-size:12px}.prerequisite-box{padding:12px;border-radius:12px;background:rgba(255,255,255,.04);margin:18px 0}.prerequisite-box span{display:block;font-size:8px;letter-spacing:.15em;color:#6e7b91}.prerequisite-box strong{display:block;margin-top:4px;font-size:12px}.prerequisite-box.success{border:1px solid rgba(125,255,178,.12)}.full-width{width:100%}.level-action-note{display:block;color:#68768d;font-size:9px;line-height:1.5;margin-top:12px}@media(max-width:780px){.course-overview-wrap,.level-details-grid{grid-template-columns:1fr}.curriculum-list{grid-template-columns:1fr}}
 .legal-page{max-width:900px}.legal-page h1{font-size:clamp(48px,6vw,78px);margin:18px 0 25px}.legal-page .legal-intro{font-size:17px;color:#a9b5c8;line-height:1.8;padding-bottom:30px;border-bottom:1px solid var(--line)}.legal-page h2{font-size:25px;margin:42px 0 10px}.legal-page p{font-size:14px;color:var(--muted);line-height:1.9}.legal-page a{color:var(--cyan)}
+
+
+/* =========================================================
+   FINAL POLISH — REAL BOTNEST LOGO + HERO + COURSE ROADMAP
+   ========================================================= */
+.brand-logo{
+  width:42px;
+  height:42px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:10px;
+  display:block;
+  flex:0 0 42px;
+  background:#050810;
+  box-shadow:0 0 20px rgba(84,231,255,.10);
+}
+
+.brand{gap:12px}
+
+.hero-grid{
+  width:min(var(--max),calc(100% - 80px));
+  margin-left:auto;
+  margin-right:auto;
+  grid-template-columns:minmax(0,1fr) minmax(430px,.92fr);
+  gap:58px;
+}
+.hero-copy,
+.hero-visual{
+  min-width:0;
+}
+.hero-copy{
+  width:100%;
+  max-width:720px;
+}
+.hero-copy h1{
+  width:100%;
+  max-width:100%;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.hero-visual{
+  width:100%;
+}
+.reveal-left{transform:translate3d(-28px,20px,0)}
+.reveal-right{transform:translate3d(28px,20px,0)}
+.scrolling-up .reveal-left:not(.reveal-visible){transform:translate3d(-28px,-20px,0)}
+.scrolling-up .reveal-right:not(.reveal-visible){transform:translate3d(28px,-20px,0)}
+
+/* Course detail layout */
+.level-detail-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:20px;
+  align-items:start;
+}
+.curriculum-card{
+  min-width:0;
+}
+.curriculum-list{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.curriculum-item{
+  min-width:0;
+  min-height:66px;
+  grid-template-columns:62px minmax(0,1fr) 20px;
+}
+.curriculum-number{
+  font-size:9px;
+  letter-spacing:.10em;
+  white-space:nowrap;
+}
+.curriculum-title{
+  line-height:1.45;
+}
+.competition-week-card{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+  margin-top:18px;
+  padding:18px;
+  border:1px solid rgba(155,124,255,.28);
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(155,124,255,.10),rgba(84,231,255,.055));
+}
+.competition-week-number{
+  color:var(--purple);
+  font:800 10px "Space Grotesk";
+  letter-spacing:.12em;
+}
+.competition-week-card strong{
+  display:block;
+  font:700 15px "Space Grotesk";
+  color:#f4f7ff;
+}
+.competition-week-card p{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+}
+.competition-week-card>span{
+  font-size:24px;
+}
+.course-structure-note{
+  margin-top:16px;
+  padding:14px 16px;
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.055);
+  color:#7f8da3;
+  font-size:10px;
+  line-height:1.65;
+}
+.course-structure-note strong{color:#b8c5d8}
+.level-detail-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:22px;
+}
+.level-detail-icon{font-size:42px;flex:0 0 auto}
+
+@media(max-width:1100px){
+  .hero-grid{
+    width:min(var(--max),calc(100% - 56px));
+    grid-template-columns:minmax(0,1fr) minmax(360px,.85fr);
+    gap:32px;
+  }
+}
+
+@media(max-width:1050px){
+  .hero-grid{
+    width:min(900px,calc(100% - 60px));
+    grid-template-columns:minmax(0,1fr);
+    gap:30px;
+  }
+  .hero-copy{
+    max-width:780px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .hero-copy .eyebrow,
+  .hero-actions,
+  .hero-trust{justify-content:center}
+  .hero-copy h1,
+  .hero-lead{margin-left:auto;margin-right:auto}
+  .hero-visual{min-height:430px}
+}
+
+@media(max-width:780px){
+  .brand-logo{width:38px;height:38px;flex-basis:38px}
+  .hero-grid{width:calc(100% - 30px);gap:24px}
+  .hero-copy{text-align:center}
+  .hero-copy h1{max-width:100%;font-size:clamp(43px,11.5vw,62px)}
+  .hero-visual{min-height:330px}
+  .level-detail-grid{grid-template-columns:1fr}
+  .curriculum-list{grid-template-columns:1fr}
+  .competition-week-card{grid-template-columns:1fr auto}
+  .competition-week-number{grid-column:1/-1}
+  .level-detail-header{gap:16px}
+}
+
+@media(max-width:480px){
+  .hero-grid{width:calc(100% - 24px)}
+  .hero-copy h1{font-size:43px}
+  .hero-visual{min-height:300px}
+  .curriculum-item{grid-template-columns:54px minmax(0,1fr) 18px}
+  .competition-week-card{grid-template-columns:1fr}
+  .competition-week-card>span{display:none}
+}
