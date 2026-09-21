@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BotNest Academy — practical learning in Robotics, IoT, Artificial Intelligence, Machine Learning, Deep Learning and Automation.">
+  <meta name="theme-color" content="#070a12">
+  <title>BotNest Academy | Explore. Engineer. Elevate.</title>
+  <link rel="stylesheet" href="styles.css"><link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <div class="site-noise"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="BotNest Academy home">
+        <img class="brand-logo" src="assets/botnest-logo.svg" alt="BotNest Academy logo">
+        <span><strong>BOTNEST</strong><small>ACADEMY</small></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="index.html#programs">Programs</a>
+        <a href="about.html">About</a>
+        <a href="index.html#why-botnest">Why BotNest</a>
+        <a href="index.html#journey">Learning Journey</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="contact.html">Contact</a>
+        <div class="nav-account" id="navAccount"></div>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-pad">
+      <div class="hero-grid container">
+        <div class="hero-copy reveal reveal-left">
+          <div class="eyebrow"><span></span> FUTURE-READY TECHNOLOGY EDUCATION</div>
+          <h1>Build the skills that <em>build the future.</em></h1>
+          <p class="hero-lead">Practical technology education for students who want to move beyond watching technology — and start building it.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#programs">Explore Programs <span>↗</span></a>
+            <a class="btn btn-ghost" href="signup.html">Create Student Account</a>
+          </div>
+          <div class="hero-trust">
+            <span>Robotics</span><i></i><span>IoT</span><i></i><span>AI</span><i></i><span>Automation</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-right" data-parallax="0.035" aria-hidden="true">
+          <div class="orbital orbital-a"></div><div class="orbital orbital-b"></div><div class="orbital orbital-c"></div>
+          <div class="hero-core"><span class="core-ring"></span><strong>BN</strong><small>ENGINEER<br>THE FUTURE</small></div>
+          <div class="float-chip chip-one">ESP32</div><div class="float-chip chip-two">AI / ML</div><div class="float-chip chip-three">ROBOTICS</div><div class="float-chip chip-four">IOT</div>
+        </div>
+      </div>
+      <div class="hero-bottom container reveal reveal-up">
+        <div><strong>06</strong><span>Technology<br>Programs</span></div>
+        <div><strong>03</strong><span>Learning<br>Levels</span></div>
+        <div><strong>∞</strong><span>Build.<br>Experiment.</span></div>
+        <div class="hero-note">Designed around practical learning, projects and engineering thinking.</div>
+      </div>
+    </section>
+
+    <section class="section-pad section-dark" id="programs">
+      <div class="container">
+        <div class="section-heading reveal reveal-left">
+          <div class="eyebrow"><span></span> BOTNEST ACADEMY PROGRAMS</div>
+          <h2>Choose your <em>technology track.</em></h2>
+          <p>Start with fundamentals, build practical systems, and progress toward advanced engineering concepts.</p>
+        </div>
+        <div class="program-grid" id="programGrid"></div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="why-botnest">
+      <div class="container two-column">
+        <div class="section-heading reveal reveal-left">
+          <div class="eyebrow"><span></span> WHY BOTNEST</div>
+          <h2>Learning should feel like <em>building.</em></h2>
+          <p>BotNest Academy focuses on technology education where students can understand concepts and connect them to practical systems.</p>
+          <a class="text-link" href="about.html">Discover BotNest Academy <span>→</span></a>
+        </div>
+        <div class="feature-stack">
+          <article class="feature-card reveal reveal-right"><span>01</span><div><h3>Practical first</h3><p>Move from concepts to circuits, code, systems and guided projects.</p></div></article>
+          <article class="feature-card reveal reveal-right"><span>02</span><div><h3>Structured progression</h3><p>Beginner, Intermediate and Expert levels give learners a clear path forward.</p></div></article>
+          <article class="feature-card reveal reveal-right"><span>03</span><div><h3>Engineering mindset</h3><p>Learn to test, debug, improve and explain what you build.</p></div></article>
+          <article class="feature-card reveal reveal-right"><span>04</span><div><h3>Project-driven</h3><p>Use technology as a tool for solving problems, not just memorising theory.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-dark" id="journey">
+      <div class="container">
+        <div class="section-heading centered reveal reveal-up">
+          <div class="eyebrow"><span></span> LEARNING JOURNEY</div>
+          <h2>From <em>curious</em> to capable.</h2>
+        </div>
+        <div class="journey-grid">
+          <article class="journey-card reveal reveal-left"><b>01</b><h3>Discover</h3><p>Understand the fundamentals, tools and building blocks of your chosen technology.</p></article>
+          <article class="journey-card reveal reveal-up"><b>02</b><h3>Build</h3><p>Apply what you learn through guided experiments, coding and practical systems.</p></article>
+          <article class="journey-card reveal reveal-right"><b>03</b><h3>Engineer</h3><p>Combine concepts, debug problems and work toward more advanced projects.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="projects">
+      <div class="container project-showcase">
+        <div class="project-copy reveal reveal-left">
+          <div class="eyebrow"><span></span> PROJECT MINDSET</div>
+          <h2>Don't just learn technology.<br><em>Make something with it.</em></h2>
+          <p>From robots and connected devices to intelligent applications and automation systems, BotNest encourages learners to turn concepts into working ideas.</p>
+          <a class="btn btn-primary" href="contact.html">Talk to BotNest <span>↗</span></a>
+        </div>
+        <div class="project-panel reveal reveal-right">
+          <div class="project-line"></div>
+          <div class="project-node node-a">ROBOTICS</div><div class="project-node node-b">IOT</div><div class="project-node node-c">AI</div><div class="project-node node-d">AUTOMATION</div>
+          <div class="project-center">BUILD<br><strong>→</strong><br>LEARN</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section section-pad">
+      <div class="container cta-card reveal reveal-up">
+        <div><div class="eyebrow"><span></span> FOR STUDENTS & PARENTS</div><h2>Ready to start the<br><em>next build?</em></h2></div>
+        <div class="cta-side"><p>Explore the programs and create an account to register a student for a learning track.</p><div><a class="btn btn-primary" href="signup.html">Create Account <span>↗</span></a><a class="btn btn-ghost" href="contact.html">Contact Us</a></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="brand" href="index.html"><img class="brand-logo" src="assets/botnest-logo.svg" alt="BotNest Academy logo"><span><strong>BOTNEST</strong><small>ACADEMY</small></span></a><p>Explore. Engineer. Elevate.</p></div>
+      <div><h4>Academy</h4><a href="index.html#programs">Programs</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div><h4>Account</h4><a href="login.html">Login</a><a href="signup.html">Create Account</a><a href="customer.html">Dashboard</a></div>
+      <div><h4>Policies</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="refund-policy.html">Refund Policy</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> BotNest Academy</span><span>Built for curious minds.</span></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="BotNest Academy customer dashboard."
+  >
+
+  <title>My Dashboard | BotNest Academy</title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+</head>
+
+<body class="dashboard-page">
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="site-header">
+
+    <div class="container nav-wrap">
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="BotNest Academy Home"
+      >
+
+        <img
+          src="assets/botnest-logo.svg"
+          alt="BotNest Academy"
+        >
+
+        <div class="brand-text">
+          <strong>BOTNEST</strong>
+          <span>ACADEMY</span>
+        </div>
+
+      </a>
+
+
+      <div class="dashboard-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="index.html#programs">
+          Programs
+        </a>
+
+        <button
+          type="button"
+          id="logoutButton"
+          class="nav-logout"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="dashboard-main">
+
+    <div class="container dashboard-shell">
+
+      <!-- Loading -->
+
+      <div
+        id="dashboardLoading"
+        class="dashboard-loading"
+      >
+
+        <div class="loading-orbit"></div>
+
+        <h2>
+          Loading your dashboard...
+        </h2>
+
+        <p>
+          Getting your students' learning
+          information.
+        </p>
+
+      </div>
+
+
+      <!-- Error -->
+
+      <div
+        id="dashboardError"
+        class="dashboard-error"
+        hidden
+      >
+
+        <div class="dashboard-error-icon">
+          !
+        </div>
+
+        <h2>
+          We couldn't load your dashboard
+        </h2>
+
+        <p id="dashboardErrorMessage">
+          Please login again.
+        </p>
+
+        <a
+          href="login.html"
+          class="btn btn-primary"
+        >
+          Login Again
+        </a>
+
+      </div>
+
+
+      <!-- Actual Dashboard -->
+
+      <section
+        id="dashboardContent"
+        hidden
+      >
+
+        <!-- ================= TOP ================= -->
+
+        <div class="dashboard-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              CUSTOMER DASHBOARD
+            </p>
+
+            <h1>
+              Welcome,
+              <span id="customerName">
+                Customer
+              </span>
+            </h1>
+
+            <p class="dashboard-subtitle">
+              Follow your student's learning
+              journey, attendance and course
+              progress in one place.
+            </p>
+
+          </div>
+
+
+          <div class="dashboard-actions">
+
+            <a
+              href="index.html#programs"
+              class="btn btn-primary"
+            >
+              + Register Student
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= ACCOUNT ================= -->
+
+        <section class="account-summary reveal">
+
+          <div class="account-summary-icon">
+            ◈
+          </div>
+
+          <div class="account-summary-content">
+
+            <span class="summary-label">
+              ACCOUNT
+            </span>
+
+            <strong id="accountName">
+              —
+            </strong>
+
+            <span id="accountEmail">
+              —
+            </span>
+
+            <span id="accountPhone">
+              —
+            </span>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="dashboard-stats reveal">
+
+          <div class="dashboard-stat">
+
+            <span class="dashboard-stat-icon">
+              ◉
+            </span>
+
+            <div>
+
+              <strong id="studentCount">
+                0
+              </strong>
+
+              <span>
+                Students
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="dashboard-stat">
+
+            <span class="dashboard-stat-icon">
+              ◇
+            </span>
+
+            <div>
+
+              <strong id="courseCount">
+                0
+              </strong>
+
+              <span>
+                Enrollments
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="dashboard-stat">
+
+            <span class="dashboard-stat-icon">
+              ✓
+            </span>
+
+            <div>
+
+              <strong id="completedCount">
+                0
+              </strong>
+
+              <span>
+                Completed
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="dashboard-stat">
+
+            <span class="dashboard-stat-icon">
+              %
+            </span>
+
+            <div>
+
+              <strong id="averageProgress">
+                0%
+              </strong>
+
+              <span>
+                Average Progress
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= STUDENTS ================= -->
+
+        <section class="dashboard-section">
+
+          <div class="section-heading">
+
+            <div>
+
+              <p class="eyebrow">
+                LEARNING JOURNEY
+              </p>
+
+              <h2>
+                My Students
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="studentsContainer"
+            class="students-grid"
+          ></div>
+
+
+          <!-- No students -->
+
+          <div
+            id="noStudents"
+            class="empty-dashboard"
+            hidden
+          >
+
+            <div class="empty-dashboard-icon">
+              +
+            </div>
+
+            <h3>
+              No students registered yet
+            </h3>
+
+            <p>
+              Register your child or student
+              for a BotNest Academy program
+              to start tracking their journey.
+            </p>
+
+            <a
+              href="index.html#programs"
+              class="btn btn-primary"
+            >
+              Explore Programs
+            </a>
+
+          </div>
+
+        </section>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="site-footer compact-footer">
+
+    <div class="container footer-bottom">
+
+      <p>
+        © <span id="year"></span>
+        BotNest Academy.
+        All rights reserved.
+      </p>
+
+      <p>
+        Explore · Engineer · Elevate
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+  <script src="customer.js"></script>
+
+</body>
+
+</html>
