@@ -886,33 +886,18 @@ document.addEventListener(
                 .map(
                   (module, index) => `
 
-                    <div
-                      class="curriculum-item reveal reveal-right"
-                    >
+                    <div class="curriculum-item">
 
                       <span class="curriculum-number">
-
-                        ${String(
-                          index + 1
-                        ).padStart(
-                          2,
-                          "0"
-                        )}
-
+                        WEEK ${index + 1}
                       </span>
-
 
                       <span class="curriculum-title">
-
-                        ${escapeHtml(
-                          module
-                        )}
-
+                        ${escapeHtml(module)}
                       </span>
 
-
                       <span class="curriculum-check">
-                        +
+                        ✓
                       </span>
 
                     </div>
@@ -922,6 +907,19 @@ document.addEventListener(
                 .join("")
               }
 
+            </div>
+
+            <div class="competition-week-card">
+              <div class="competition-week-number">WEEK 08</div>
+              <div>
+                <strong>Final Challenge &amp; Competition</strong>
+                <p>Apply the skills from the seven learning weeks through a small practical competition or project challenge.</p>
+              </div>
+              <span>🏆</span>
+            </div>
+
+            <div class="course-structure-note">
+              <strong>Standard structure:</strong> 8 weeks — 7 topic-focused learning weeks followed by a final competition/challenge week. Session duration and total learning time may be extended for higher levels when topics require additional practical work.
             </div>
 
           </div>
@@ -1026,6 +1024,8 @@ document.addEventListener(
         </div>
 
       `;
+
+      window.BotNestAnimations?.refresh?.();
 
     }
 
