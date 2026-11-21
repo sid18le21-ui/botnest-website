@@ -1,0 +1,1032 @@
+[
+  {
+    "name": "Smart LED bulbs",
+    "category": "Lighting Control",
+    "price": 699
+  },
+  {
+    "name": "RGB colour bulbs",
+    "category": "Lighting Control",
+    "price": 999
+  },
+  {
+    "name": "Dimmable bulbs",
+    "category": "Lighting Control",
+    "price": 799
+  },
+  {
+    "name": "Smart tube lights",
+    "category": "Lighting Control",
+    "price": 1299
+  },
+  {
+    "name": "LED strip lights",
+    "category": "Lighting Control",
+    "price": 1999
+  },
+  {
+    "name": "RGB LED controllers",
+    "category": "Lighting Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart ceiling lights",
+    "category": "Lighting Control",
+    "price": 2499
+  },
+  {
+    "name": "Smart panel lights",
+    "category": "Lighting Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart downlights",
+    "category": "Lighting Control",
+    "price": 999
+  },
+  {
+    "name": "Smart outdoor lights",
+    "category": "Lighting Control",
+    "price": 4999
+  },
+  {
+    "name": "Smart garden lights",
+    "category": "Lighting Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart night lamps",
+    "category": "Lighting Control",
+    "price": 999
+  },
+  {
+    "name": "Smart decorative lights",
+    "category": "Lighting Control",
+    "price": 1999
+  },
+  {
+    "name": "Smart lighting controllers",
+    "category": "Lighting Control",
+    "price": 1499
+  },
+  {
+    "name": "Single-channel smart switches",
+    "category": "Electrical Control",
+    "price": 1799
+  },
+  {
+    "name": "Two-channel smart switches",
+    "category": "Electrical Control",
+    "price": 2499
+  },
+  {
+    "name": "Three-channel smart switches",
+    "category": "Electrical Control",
+    "price": 2999
+  },
+  {
+    "name": "Four-channel smart switches",
+    "category": "Electrical Control",
+    "price": 3499
+  },
+  {
+    "name": "Smart touch switches",
+    "category": "Electrical Control",
+    "price": 2999
+  },
+  {
+    "name": "Smart plug sockets",
+    "category": "Electrical Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart power strips",
+    "category": "Electrical Control",
+    "price": 2499
+  },
+  {
+    "name": "Smart dimmer switches",
+    "category": "Electrical Control",
+    "price": 2999
+  },
+  {
+    "name": "Smart curtain switches",
+    "category": "Electrical Control",
+    "price": 1999
+  },
+  {
+    "name": "Smart relay modules",
+    "category": "Electrical Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart circuit breakers",
+    "category": "Electrical Control",
+    "price": 3999
+  },
+  {
+    "name": "Smart energy monitoring switches",
+    "category": "Electrical Control",
+    "price": 2999
+  },
+  {
+    "name": "Smart wall outlets",
+    "category": "Electrical Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart socket controllers",
+    "category": "Electrical Control",
+    "price": 1499
+  },
+  {
+    "name": "Smart air conditioners",
+    "category": "Climate & Air Control",
+    "price": 34999
+  },
+  {
+    "name": "AC IR controllers",
+    "category": "Climate & Air Control",
+    "price": 2999
+  },
+  {
+    "name": "Smart ceiling fans",
+    "category": "Climate & Air Control",
+    "price": 4999
+  },
+  {
+    "name": "Smart fan regulators",
+    "category": "Climate & Air Control",
+    "price": 1999
+  },
+  {
+    "name": "Smart exhaust fans",
+    "category": "Climate & Air Control",
+    "price": 2499
+  },
+  {
+    "name": "Smart heaters",
+    "category": "Climate & Air Control",
+    "price": 4999
+  },
+  {
+    "name": "Smart water heaters / geysers",
+    "category": "Climate & Air Control",
+    "price": 8999
+  },
+  {
+    "name": "Smart thermostats",
+    "category": "Climate & Air Control",
+    "price": 4999
+  },
+  {
+    "name": "Smart air purifiers",
+    "category": "Climate & Air Control",
+    "price": 7999
+  },
+  {
+    "name": "Smart humidifiers",
+    "category": "Climate & Air Control",
+    "price": 3999
+  },
+  {
+    "name": "Smart dehumidifiers",
+    "category": "Climate & Air Control",
+    "price": 9999
+  },
+  {
+    "name": "Smart ventilation controllers",
+    "category": "Climate & Air Control",
+    "price": 2999
+  },
+  {
+    "name": "Smart diffusers",
+    "category": "Climate & Air Control",
+    "price": 4999
+  },
+  {
+    "name": "Smart refrigerators",
+    "category": "Kitchen & Household Appliances",
+    "price": 34999
+  },
+  {
+    "name": "Smart microwave ovens",
+    "category": "Kitchen & Household Appliances",
+    "price": 9999
+  },
+  {
+    "name": "Smart ovens",
+    "category": "Kitchen & Household Appliances",
+    "price": 17999
+  },
+  {
+    "name": "Smart induction cookers",
+    "category": "Kitchen & Household Appliances",
+    "price": 4999
+  },
+  {
+    "name": "Smart rice cookers",
+    "category": "Kitchen & Household Appliances",
+    "price": 3999
+  },
+  {
+    "name": "Smart coffee machines",
+    "category": "Kitchen & Household Appliances",
+    "price": 6999
+  },
+  {
+    "name": "Smart kettles",
+    "category": "Kitchen & Household Appliances",
+    "price": 2499
+  },
+  {
+    "name": "Smart dishwashers",
+    "category": "Kitchen & Household Appliances",
+    "price": 29999
+  },
+  {
+    "name": "Smart water purifiers",
+    "category": "Kitchen & Household Appliances",
+    "price": 8999
+  },
+  {
+    "name": "Smart kitchen hoods / chimneys",
+    "category": "Kitchen & Household Appliances",
+    "price": 12999
+  },
+  {
+    "name": "Smart food warmers",
+    "category": "Kitchen & Household Appliances",
+    "price": 3999
+  },
+  {
+    "name": "Smart electric cookers",
+    "category": "Kitchen & Household Appliances",
+    "price": 4999
+  },
+  {
+    "name": "Motion sensors (PIR)",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Human presence sensors",
+    "category": "Sensors & Monitoring",
+    "price": 2499
+  },
+  {
+    "name": "Temperature sensors",
+    "category": "Sensors & Monitoring",
+    "price": 999
+  },
+  {
+    "name": "Humidity sensors",
+    "category": "Sensors & Monitoring",
+    "price": 999
+  },
+  {
+    "name": "Temperature and humidity sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Water leakage sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Gas leakage sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1999
+  },
+  {
+    "name": "Smoke detectors",
+    "category": "Sensors & Monitoring",
+    "price": 1999
+  },
+  {
+    "name": "Carbon monoxide detectors",
+    "category": "Sensors & Monitoring",
+    "price": 2499
+  },
+  {
+    "name": "Light sensors",
+    "category": "Sensors & Monitoring",
+    "price": 999
+  },
+  {
+    "name": "Vibration sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Sound sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Air quality sensors",
+    "category": "Sensors & Monitoring",
+    "price": 3999
+  },
+  {
+    "name": "PM2.5 sensors",
+    "category": "Sensors & Monitoring",
+    "price": 2999
+  },
+  {
+    "name": "Occupancy sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Water level sensors",
+    "category": "Sensors & Monitoring",
+    "price": 1499
+  },
+  {
+    "name": "Rain sensors",
+    "category": "Sensors & Monitoring",
+    "price": 999
+  },
+  {
+    "name": "Soil moisture sensors",
+    "category": "Sensors & Monitoring",
+    "price": 999
+  },
+  {
+    "name": "Smart curtain motors",
+    "category": "Curtains, Doors & Window Automation",
+    "price": 8999
+  },
+  {
+    "name": "Smart roller blinds",
+    "category": "Curtains, Doors & Window Automation",
+    "price": 12999
+  },
+  {
+    "name": "Smart window blinds",
+    "category": "Curtains, Doors & Window Automation",
+    "price": 12999
+  },
+  {
+    "name": "Smart curtain tracks",
+    "category": "Curtains, Doors & Window Automation",
+    "price": 6999
+  },
+  {
+    "name": "Smart window openers",
+    "category": "Curtains, Doors & Window Automation",
+    "price": 7999
+  },
+  {
+    "name": "Smart water pumps",
+    "category": "Water Management & Outdoor Automation",
+    "price": 5999
+  },
+  {
+    "name": "Smart irrigation controllers",
+    "category": "Water Management & Outdoor Automation",
+    "price": 3999
+  },
+  {
+    "name": "Smart sprinkler systems",
+    "category": "Water Management & Outdoor Automation",
+    "price": 6999
+  },
+  {
+    "name": "Smart water valves",
+    "category": "Water Management & Outdoor Automation",
+    "price": 2499
+  },
+  {
+    "name": "Smart water flow meters",
+    "category": "Water Management & Outdoor Automation",
+    "price": 3999
+  },
+  {
+    "name": "Smart water tank level controllers",
+    "category": "Water Management & Outdoor Automation",
+    "price": 3999
+  },
+  {
+    "name": "Smart garden sensors",
+    "category": "Water Management & Outdoor Automation",
+    "price": 1999
+  },
+  {
+    "name": "Smart pool controllers",
+    "category": "Water Management & Outdoor Automation",
+    "price": 6999
+  },
+  {
+    "name": "Smart outdoor lighting",
+    "category": "Water Management & Outdoor Automation",
+    "price": 2499
+  },
+  {
+    "name": "Smart outdoor power controllers",
+    "category": "Water Management & Outdoor Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart IR remote controllers",
+    "category": "Entertainment & Lifestyle",
+    "price": 1499
+  },
+  {
+    "name": "TV controllers",
+    "category": "Entertainment & Lifestyle",
+    "price": 1499
+  },
+  {
+    "name": "Smart speakers",
+    "category": "Entertainment & Lifestyle",
+    "price": 3999
+  },
+  {
+    "name": "Smart audio controllers",
+    "category": "Entertainment & Lifestyle",
+    "price": 2999
+  },
+  {
+    "name": "RGB ambient lighting",
+    "category": "Entertainment & Lifestyle",
+    "price": 2499
+  },
+  {
+    "name": "Smart universal remotes",
+    "category": "Entertainment & Lifestyle",
+    "price": 1499
+  },
+  {
+    "name": "Smart scene controllers",
+    "category": "Entertainment & Lifestyle",
+    "price": 1999
+  },
+  {
+    "name": "Wireless scene switches",
+    "category": "Entertainment & Lifestyle",
+    "price": 1499
+  },
+  {
+    "name": "Smart weighing scales",
+    "category": "Health, Fitness & Pet Products",
+    "price": 1999
+  },
+  {
+    "name": "Smart body-fat scales",
+    "category": "Health, Fitness & Pet Products",
+    "price": 2499
+  },
+  {
+    "name": "Smart pet feeders",
+    "category": "Health, Fitness & Pet Products",
+    "price": 4999
+  },
+  {
+    "name": "Smart pet water fountains",
+    "category": "Health, Fitness & Pet Products",
+    "price": 4999
+  },
+  {
+    "name": "Smart pet activity monitors",
+    "category": "Health, Fitness & Pet Products",
+    "price": 3999
+  },
+  {
+    "name": "Smart fitness equipment",
+    "category": "Health, Fitness & Pet Products",
+    "price": 14999
+  },
+  {
+    "name": "Smart health monitoring devices",
+    "category": "Health, Fitness & Pet Products",
+    "price": 3999
+  },
+  {
+    "name": "Wi-Fi gateways",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 3999
+  },
+  {
+    "name": "Bluetooth gateways",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 3999
+  },
+  {
+    "name": "Bluetooth Mesh gateways",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 3999
+  },
+  {
+    "name": "Multi-protocol gateways",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 3999
+  },
+  {
+    "name": "Smart home control panels",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 6999
+  },
+  {
+    "name": "Scene control panels",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 6999
+  },
+  {
+    "name": "Smart central controllers",
+    "category": "Gateways & Smart-Home Infrastructure",
+    "price": 9999
+  },
+  {
+    "name": "Robot vacuum cleaners",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 14999
+  },
+  {
+    "name": "Robot mopping machines",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 17999
+  },
+  {
+    "name": "Robot floor scrubbers",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 29999
+  },
+  {
+    "name": "Robotic window cleaners",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 19999
+  },
+  {
+    "name": "Robotic lawn mowers",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 59999
+  },
+  {
+    "name": "Robotic swimming pool cleaners",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 49999
+  },
+  {
+    "name": "Smart wet and dry vacuum cleaners",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 7999
+  },
+  {
+    "name": "Smart dustbins",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 4999
+  },
+  {
+    "name": "Smart automatic drying racks",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 9999
+  },
+  {
+    "name": "Smart shoe sterilisation cabinets",
+    "category": "Smart Cleaning & Maintenance",
+    "price": 7999
+  },
+  {
+    "name": "Smart electricity meters",
+    "category": "Advanced Energy Management",
+    "price": 3999
+  },
+  {
+    "name": "Smart three-phase energy meters",
+    "category": "Advanced Energy Management",
+    "price": 7999
+  },
+  {
+    "name": "Smart solar inverter controllers",
+    "category": "Advanced Energy Management",
+    "price": 8999
+  },
+  {
+    "name": "Solar generation monitoring systems",
+    "category": "Advanced Energy Management",
+    "price": 6999
+  },
+  {
+    "name": "Home battery storage systems",
+    "category": "Advanced Energy Management",
+    "price": 89999
+  },
+  {
+    "name": "Smart battery management systems (BMS)",
+    "category": "Advanced Energy Management",
+    "price": 8999
+  },
+  {
+    "name": "Smart EV charging stations",
+    "category": "Advanced Energy Management",
+    "price": 29999
+  },
+  {
+    "name": "Smart generator controllers",
+    "category": "Advanced Energy Management",
+    "price": 2999
+  },
+  {
+    "name": "Automatic power-source transfer controllers",
+    "category": "Advanced Energy Management",
+    "price": 2999
+  },
+  {
+    "name": "Smart load balancing systems",
+    "category": "Advanced Energy Management",
+    "price": 9999
+  },
+  {
+    "name": "Smart power-factor monitoring systems",
+    "category": "Advanced Energy Management",
+    "price": 5999
+  },
+  {
+    "name": "Smart energy consumption dashboards",
+    "category": "Advanced Energy Management",
+    "price": 4999
+  },
+  {
+    "name": "Smart toilet controllers",
+    "category": "Advanced Bathroom Automation",
+    "price": 24999
+  },
+  {
+    "name": "Smart bidet controllers",
+    "category": "Advanced Bathroom Automation",
+    "price": 9999
+  },
+  {
+    "name": "Smart bathroom mirrors",
+    "category": "Advanced Bathroom Automation",
+    "price": 7999
+  },
+  {
+    "name": "Smart mirror defoggers",
+    "category": "Advanced Bathroom Automation",
+    "price": 2499
+  },
+  {
+    "name": "Smart towel warmers",
+    "category": "Advanced Bathroom Automation",
+    "price": 6999
+  },
+  {
+    "name": "Smart bathroom heating systems",
+    "category": "Advanced Bathroom Automation",
+    "price": 5999
+  },
+  {
+    "name": "Smart shower controllers",
+    "category": "Advanced Bathroom Automation",
+    "price": 8999
+  },
+  {
+    "name": "Smart bathtub controllers",
+    "category": "Advanced Bathroom Automation",
+    "price": 9999
+  },
+  {
+    "name": "Smart water temperature controllers",
+    "category": "Advanced Bathroom Automation",
+    "price": 3999
+  },
+  {
+    "name": "Smart bathroom ventilation systems",
+    "category": "Advanced Bathroom Automation",
+    "price": 2999
+  },
+  {
+    "name": "Automatic soap dispensers",
+    "category": "Advanced Bathroom Automation",
+    "price": 1499
+  },
+  {
+    "name": "Smart hand dryers",
+    "category": "Advanced Bathroom Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart digital water meters",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart water pressure controllers",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 2999
+  },
+  {
+    "name": "Automatic water shut-off valves",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart borewell controllers",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart overhead tank refill systems",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 3999
+  },
+  {
+    "name": "Smart sump-to-overhead-tank controllers",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart water filtration monitoring systems",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart RO filter-life monitors",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 1999
+  },
+  {
+    "name": "Smart hot-water circulation controllers",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart rainwater harvesting controllers",
+    "category": "Advanced Water & Plumbing Automation",
+    "price": 5999
+  },
+  {
+    "name": "Smart indoor gardens",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 9999
+  },
+  {
+    "name": "Hydroponic growing systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 12999
+  },
+  {
+    "name": "Smart greenhouse controllers",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 8999
+  },
+  {
+    "name": "Automated nutrient dosing systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 5999
+  },
+  {
+    "name": "Smart plant watering systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 2999
+  },
+  {
+    "name": "Smart grow-light systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 3999
+  },
+  {
+    "name": "Automatic fertiliser dosing systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 4999
+  },
+  {
+    "name": "Smart composting systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 7999
+  },
+  {
+    "name": "Smart soil pH monitoring systems",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 2999
+  },
+  {
+    "name": "Smart plant health monitoring stations",
+    "category": "Indoor Gardening & Agriculture",
+    "price": 3999
+  },
+  {
+    "name": "Smart aquarium controllers",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 5999
+  },
+  {
+    "name": "Automatic fish feeders",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 1999
+  },
+  {
+    "name": "Smart aquarium lighting",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 2499
+  },
+  {
+    "name": "Aquarium temperature controllers",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 2499
+  },
+  {
+    "name": "Aquarium pH monitoring systems",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 3999
+  },
+  {
+    "name": "Aquarium dissolved oxygen monitors",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 6999
+  },
+  {
+    "name": "Aquarium water-quality monitors",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 4999
+  },
+  {
+    "name": "Automatic aquarium water changers",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart aquarium filtration controllers",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart aquarium dosing pumps",
+    "category": "Aquarium & Fish-Care Automation",
+    "price": 2999
+  },
+  {
+    "name": "Automatic pet ball launchers",
+    "category": "Advanced Pet Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart litter boxes",
+    "category": "Advanced Pet Automation",
+    "price": 14999
+  },
+  {
+    "name": "Automatic pet grooming devices",
+    "category": "Advanced Pet Automation",
+    "price": 6999
+  },
+  {
+    "name": "Smart pet dryers",
+    "category": "Advanced Pet Automation",
+    "price": 7999
+  },
+  {
+    "name": "Interactive pet toys",
+    "category": "Advanced Pet Automation",
+    "price": 2499
+  },
+  {
+    "name": "Smart pet doors",
+    "category": "Advanced Pet Automation",
+    "price": 5999
+  },
+  {
+    "name": "Automatic pet treat dispensers",
+    "category": "Advanced Pet Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart pet activity stations",
+    "category": "Advanced Pet Automation",
+    "price": 3999
+  },
+  {
+    "name": "Smart adjustable beds",
+    "category": "Comfort & Furniture Automation",
+    "price": 49999
+  },
+  {
+    "name": "Smart electric recliners",
+    "category": "Comfort & Furniture Automation",
+    "price": 29999
+  },
+  {
+    "name": "Smart massage chairs",
+    "category": "Comfort & Furniture Automation",
+    "price": 49999
+  },
+  {
+    "name": "Motorised standing desks",
+    "category": "Comfort & Furniture Automation",
+    "price": 19999
+  },
+  {
+    "name": "Smart height-adjustable tables",
+    "category": "Comfort & Furniture Automation",
+    "price": 17999
+  },
+  {
+    "name": "Smart furniture lighting",
+    "category": "Comfort & Furniture Automation",
+    "price": 2499
+  },
+  {
+    "name": "Smart mattress temperature controllers",
+    "category": "Comfort & Furniture Automation",
+    "price": 14999
+  },
+  {
+    "name": "Smart electric blinds with sunlight tracking",
+    "category": "Comfort & Furniture Automation",
+    "price": 14999
+  },
+  {
+    "name": "Smart projectors",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 14999
+  },
+  {
+    "name": "Smart digital photo frames",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 4999
+  },
+  {
+    "name": "Multi-room audio controllers",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 9999
+  },
+  {
+    "name": "Smart home theatre controllers",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 14999
+  },
+  {
+    "name": "Smart music distribution systems",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 9999
+  },
+  {
+    "name": "Smart headphone charging stations",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 1999
+  },
+  {
+    "name": "Smart TV ambient-light synchronisers",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 3999
+  },
+  {
+    "name": "Smart media streaming controllers",
+    "category": "Digital Entertainment & Smart Media",
+    "price": 3999
+  },
+  {
+    "name": "Smart desk controllers",
+    "category": "Office & Workspace Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart meeting-room controllers",
+    "category": "Office & Workspace Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart conference-room lighting",
+    "category": "Office & Workspace Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart office occupancy controllers",
+    "category": "Office & Workspace Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart printer power controllers",
+    "category": "Office & Workspace Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart server-room temperature controllers",
+    "category": "Office & Workspace Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart office energy monitors",
+    "category": "Office & Workspace Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart automated ventilation systems",
+    "category": "Office & Workspace Automation",
+    "price": 4999
+  },
+  {
+    "name": "Smart presentation-room controllers",
+    "category": "Office & Workspace Automation",
+    "price": 2999
+  },
+  {
+    "name": "Smart workspace scene controllers",
+    "category": "Office & Workspace Automation",
+    "price": 1999
+  }
+]
