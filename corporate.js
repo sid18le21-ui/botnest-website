@@ -1,8 +1,4 @@
 (() => {
-  // Mark the page as animation-capable only when this script actually loads.
-  // If JS is blocked or the file path is wrong, all content remains visible.
-  document.documentElement.classList.add("js-ready");
-
   const init = () => {
     const year = document.getElementById("year");
     if (year) year.textContent = new Date().getFullYear();
@@ -11,15 +7,14 @@
     const nav = document.getElementById("mainNav");
     if (menu && nav) {
       menu.addEventListener("click", () => {
-        const open = nav.classList.toggle("open");
-        menu.setAttribute("aria-expanded", String(open));
+        const isOpen = nav.classList.toggle("open");
+        menu.setAttribute("aria-expanded", String(isOpen));
       });
     }
 
-    const revealItems = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      revealItems.forEach(el => el.classList.add("visible"));
-    } else {
+    // Add reveal styling only as a non-blocking enhancement.
+    const items = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -27,20 +22,10 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.01, rootMargin: "0px 0px -5% 0px" });
-
-      revealItems.forEach(el => observer.observe(el));
-
-      // Ensure above-the-fold content never stays hidden if an observer
-      // callback is delayed or a browser behaves unusually.
-      requestAnimationFrame(() => {
-        revealItems.forEach(el => {
-          if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
-            el.classList.add("visible");
-            observer.unobserve(el);
-          }
-        });
-      });
+      }, { threshold: 0.05 });
+      items.forEach(item => observer.observe(item));
+    } else {
+      items.forEach(item => item.classList.add("visible"));
     }
 
     const form = document.getElementById("enquiry");
@@ -48,29 +33,27 @@
       const params = new URLSearchParams(window.location.search);
       const interest = params.get("interest");
       const select = document.getElementById("interest");
-      if (interest && select) {
-        const option = [...select.options].find(o =>
-          o.text.toLowerCase() === interest.toLowerCase()
+      if (interest && select && interest.length < 80) {
+        let option = [...select.options].find(item =>
+          item.text.toLowerCase() === interest.toLowerCase()
         );
-        if (option) {
-          select.value = option.value;
-        } else if (interest.length < 80) {
-          const added = document.createElement("option");
-          added.textContent = interest;
-          added.value = interest;
-          select.add(added);
-          select.value = interest;
+        if (!option) {
+          option = document.createElement("option");
+          option.value = interest;
+          option.textContent = interest;
+          select.add(option);
         }
+        select.value = option.value;
       }
 
       form.addEventListener("submit", event => {
         event.preventDefault();
-        const data = new FormData(form);
+        const values = new FormData(form);
         const subject = encodeURIComponent(
-          "BotNest project enquiry — " + (data.get("interest") || "General")
+          "BotNest project enquiry — " + (values.get("interest") || "General")
         );
         const body = encodeURIComponent(
-          `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nInterest: ${data.get("interest")}\n\nRequirement:\n${data.get("message")}`
+          `Name: ${values.get("name")}\nEmail: ${values.get("email")}\nInterest: ${values.get("interest")}\n\nRequirement:\n${values.get("message")}`
         );
         window.location.href =
           `mailto:botnest.officials@gmail.com?subject=${subject}&body=${body}`;
