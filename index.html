@@ -1316,7 +1316,9 @@
       @media (max-width: 860px) {
         .ba {
           cursor: ns-resize;
-          touch-action: none;
+          /* Keep vertical page scrolling native on touch screens.
+             Only the slider handle itself uses touch-action:none. */
+          touch-action: pan-y;
         }
         .ba .lay {
           grid-template-columns: 1fr;
